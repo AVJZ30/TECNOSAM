@@ -5,6 +5,4 @@ id;brand;model;price;image;features;whatsapp;offer;category
 4;Samsung;Galaxy A54;399;https://via.placeholder.com/600x400?text=Galaxy+A54;"6GB RAM;128GB;64MP cámara;5000mAh";593999777888;FALSO;Gama Media
 5;Apple;iPhone SE;499;https://via.placeholder.com/600x400?text=iPhone+SE;"4GB RAM;128GB;Touch ID;Chip A15";593999888999;VERDADERO;Gama Media
 6;Xiaomi;Redmi Note;299;https://via.placeholder.com/600x400?text=Redmi+Note;"6GB RAM;128GB;AMOLED;67W carga";593999000111;FALSO;Económicos
-6;Xiaomi;Redmi Note 15 ;399;https://via.placeholder.com/600x400?text=Redmi+Note;"7GB RAM;128GB;AMOLED;67W carga";593999000111;FALSO;Económicos
-
-
+7;Xiaomi;Redmi Note 15 ;399;https://via.placeholder.com/600x400?text=Redmi+Note15;"7GB RAM;128GB;AMOLED;67W carga";593999000111;FALSO;Económicos
