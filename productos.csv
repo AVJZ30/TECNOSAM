@@ -1,0 +1,7 @@
+id;brand;model;price;image;features;whatsapp;offer;category
+1;Samsung;Galaxy S25;899;https://via.placeholder.com/600x400?text=Samsung+S25;"8GB RAM;256GB;108MP cámara;5000mAh";593999111222;VERDADERO;Gama Alta
+2;Apple;iPhone 16;1199;https://via.placeholder.com/600x400?text=iPhone+16;"6GB RAM;256GB;48MP cámara;A18 chip";593999333444;FALSO;Gama Alta
+3;Xiaomi;Mi Ultra;699;https://via.placeholder.com/600x400?text=Xiaomi+Ultra;"12GB RAM;512GB;200MP cámara;120W carga rápida";593999555666;VERDADERO;Gama Alta
+4;Samsung;Galaxy A54;399;https://via.placeholder.com/600x400?text=Galaxy+A54;"6GB RAM;128GB;64MP cámara;5000mAh";593999777888;FALSO;Gama Media
+5;Apple;iPhone SE;499;https://via.placeholder.com/600x400?text=iPhone+SE;"4GB RAM;128GB;Touch ID;Chip A15";593999888999;VERDADERO;Gama Media
+6;Xiaomi;Redmi Note;299;https://via.placeholder.com/600x400?text=Redmi+Note;"6GB RAM;128GB;AMOLED;67W carga";593999000111;FALSO;Económicos
