@@ -208,8 +208,36 @@
   document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("year").textContent = new Date().getFullYear();
     loadProducts();
-  });
+  }
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script>
+Papa.parse("productos.csv", {
+  download: true,
+  header: true,
+  complete: function(results) {
+    const PRODUCTS = results.data.map(p => ({
+      id: parseInt(p.id),
+      brand: p.brand,
+      model: p.model,
+      price: parseFloat(p.price),
+      image: p.image,
+      features: p.features.split(";"),
+      whatsapp: p.whatsapp,
+      offer: p.offer.toLowerCase() === "true",
+      category: p.category
+    }));
+    
+    // Renderiza usando tu misma función
+    window.PRODUCTS = PRODUCTS;
+    renderOffers();
+    renderProducts();
+  }
+});
+</script>
+                       
+                           );
   </script>
 </body>
 </html>
+
 
