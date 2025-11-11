@@ -10,9 +10,81 @@
   <style>
     html { scroll-behavior: smooth; }
     body { background-color: black; color: white; font-family: 'Poppins', sans-serif; }
-    .btn-anim:hover { transform: scale(1.05); transition: transform 0.2s; }
-    .btn-anim:active { transform: scale(0.95); }
-    .card:hover { transform: translateY(-6px) scale(1.02); transition: all 0.3s ease; }
+    
+    /* Animaciones mejoradas */
+    .btn-anim { 
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    }
+    .btn-anim:hover { 
+      transform: scale(1.05); 
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .btn-anim:active { 
+      transform: scale(0.95); 
+    }
+    
+    .card { 
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+      overflow: hidden;
+    }
+    .card:hover { 
+      transform: translateY(-10px) scale(1.02); 
+      box-shadow: 0 15px 30px rgba(220, 38, 38, 0.3);
+    }
+    
+    /* Animación de entrada para elementos */
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Efecto de brillo en las imágenes */
+    .img-hover {
+      transition: transform 0.5s, filter 0.5s;
+    }
+    .img-hover:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+    
+    /* Animación para el botón de filtro activo */
+    .filter-active {
+      background-color: #dc2626 !important;
+      box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
+    }
+    
+    /* Estilos para botones de redes sociales */
+    .social-btn {
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 5px;
+    }
+    .social-btn:hover {
+      transform: translateY(-3px);
+    }
+    .facebook { background-color: #3b5998; }
+    .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .tiktok { background-color: #000000; }
+    .whatsapp { background-color: #25D366; }
+    
+    /* Categorías de celulares */
+    .category-card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+    }
   </style>
 </head>
 
@@ -21,20 +93,20 @@
   <header class="sticky top-0 z-50 bg-gradient-to-r from-red-800 via-black to-green-900 border-b border-red-700/50">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-4 cursor-pointer">
-        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-bold text-lg shadow-lg">TC</div>
+        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-bold text-lg shadow-lg hover:scale-110 transition-transform duration-300">TC</div>
         <div>
           <h1 class="text-xl font-extrabold tracking-tight">Tienda Celulares</h1>
           <p class="text-xs text-gray-300">Compra fácil vía WhatsApp</p>
         </div>
       </div>
       <nav class="hidden md:flex gap-3">
-        <button onclick="filterBrand('Todos')" class="px-3 py-2 rounded-md bg-red-600/80 text-sm font-medium">Todos</button>
-        <button onclick="filterBrand('Samsung')" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Samsung</button>
-        <button onclick="filterBrand('Apple')" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Apple</button>
-        <button onclick="filterBrand('Xiaomi')" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Xiaomi</button>
+        <button onclick="filterBrand('Todos')" id="filter-todos" class="px-3 py-2 rounded-md bg-red-600/80 text-sm font-medium filter-active">Todos</button>
+        <button onclick="filterBrand('Samsung')" id="filter-samsung" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Samsung</button>
+        <button onclick="filterBrand('Apple')" id="filter-apple" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Apple</button>
+        <button onclick="filterBrand('Xiaomi')" id="filter-xiaomi" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Xiaomi</button>
       </nav>
       <div class="flex items-center gap-3">
-        <input id="searchInput" onkeyup="filterProducts()" placeholder="Buscar..." class="hidden sm:inline-block bg-white/10 px-3 py-2 rounded-md text-sm outline-none focus:ring-2 focus:ring-green-400">
+        <input id="searchInput" onkeyup="filterProducts()" placeholder="Buscar..." class="hidden sm:inline-block bg-white/10 px-3 py-2 rounded-md text-sm outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300">
         <button onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})" class="px-3 py-2 rounded-md bg-red-500 btn-anim">Ver productos</button>
       </div>
     </div>
@@ -43,26 +115,80 @@
   <!-- Hero -->
   <section class="bg-[url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=60')] bg-cover bg-center">
     <div class="backdrop-brightness-50 py-20 text-center">
-      <h2 class="text-4xl sm:text-5xl font-extrabold">Los mejores celulares al alcance</h2>
-      <p class="mt-4 text-gray-200 max-w-xl mx-auto">Precios transparentes, pago y contacto directo por WhatsApp. Ofertas semanales y envío a todo el país.</p>
+      <h2 class="text-4xl sm:text-5xl font-extrabold fade-in">Los mejores celulares al alcance</h2>
+      <p class="mt-4 text-gray-200 max-w-xl mx-auto fade-in">Precios transparentes, pago y contacto directo por WhatsApp. Ofertas semanales y envío a todo el país.</p>
       <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
         <a href="#productos" class="px-6 py-3 rounded-full bg-green-500 font-semibold shadow-lg btn-anim">Ver catálogo</a>
         <a href="#ofertas" class="px-6 py-3 rounded-full border border-white/20 btn-anim">Ofertas</a>
+      </div>
+      
+      <!-- Botones de redes sociales en el hero -->
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="https://facebook.com/tu_tienda" target="_blank" class="social-btn facebook">
+          <i class="fab fa-facebook-f text-white"></i>
+        </a>
+        <a href="https://instagram.com/tu_tienda" target="_blank" class="social-btn instagram">
+          <i class="fab fa-instagram text-white"></i>
+        </a>
+        <a href="https://tiktok.com/@tu_tienda" target="_blank" class="social-btn tiktok">
+          <i class="fab fa-tiktok text-white"></i>
+        </a>
+        <a href="https://wa.me/593999111222" target="_blank" class="social-btn whatsapp">
+          <i class="fab fa-whatsapp text-white"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorías -->
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold text-center mb-8 fade-in">Categorías de Celulares</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-6 text-center border border-gray-800">
+        <div class="w-16 h-16 mx-auto mb-4 bg-blue-500 rounded-full flex items-center justify-center">
+          <i class="fas fa-mobile-alt text-white text-2xl"></i>
+        </div>
+        <h3 class="font-semibold">Gama Alta</h3>
+        <p class="text-sm text-gray-300 mt-2">Los mejores equipos con tecnología de punta</p>
+      </div>
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-6 text-center border border-gray-800">
+        <div class="w-16 h-16 mx-auto mb-4 bg-green-500 rounded-full flex items-center justify-center">
+          <i class="fas fa-chart-line text-white text-2xl"></i>
+        </div>
+        <h3 class="font-semibold">Gama Media</h3>
+        <p class="text-sm text-gray-300 mt-2">Excelente relación calidad-precio</p>
+      </div>
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-6 text-center border border-gray-800">
+        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-500 rounded-full flex items-center justify-center">
+          <i class="fas fa-dollar-sign text-white text-2xl"></i>
+        </div>
+        <h3 class="font-semibold">Económicos</h3>
+        <p class="text-sm text-gray-300 mt-2">Calidad a precios accesibles</p>
+      </div>
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-6 text-center border border-gray-800">
+        <div class="w-16 h-16 mx-auto mb-4 bg-red-500 rounded-full flex items-center justify-center">
+          <i class="fas fa-gem text-white text-2xl"></i>
+        </div>
+        <h3 class="font-semibold">Reacondicionados</h3>
+        <p class="text-sm text-gray-300 mt-2">Excelente estado con garantía</p>
       </div>
     </div>
   </section>
 
   <!-- Ofertas -->
   <section id="ofertas" class="max-w-6xl mx-auto px-4 py-8">
-    <h3 class="text-2xl font-bold text-red-400">Ofertas destacadas</h3>
+    <h3 class="text-2xl font-bold text-red-400 fade-in">Ofertas destacadas</h3>
     <div id="offersContainer" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
   </section>
 
   <!-- Productos -->
   <main id="productos" class="max-w-6xl mx-auto px-4 py-8">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-2">
-      <h2 class="text-2xl font-bold">Catálogo</h2>
-      <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="showOffersOnly" onchange="renderProducts()"> Solo ofertas</label>
+      <h2 class="text-2xl font-bold fade-in">Catálogo</h2>
+      <label class="flex items-center gap-2 text-sm fade-in">
+        <input type="checkbox" id="showOffersOnly" onchange="renderProducts()"> 
+        Solo ofertas
+      </label>
     </div>
     <div id="productsContainer" class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </main>
@@ -73,10 +199,19 @@
       <div class="text-center md:text-left">
         <div class="font-bold text-white text-lg">Tienda Celulares</div>
         <div>Contacto: <a href="mailto:ventas@tiendacelulares.example" class="underline">ventas@tiendacelulares.example</a></div>
-        <div class="mt-3 flex justify-center md:justify-start gap-4 text-2xl">
-          <a href="https://facebook.com/tu_tienda" target="_blank" class="hover:text-green-400"><i class="fab fa-facebook"></i></a>
-          <a href="https://instagram.com/tu_tienda" target="_blank" class="hover:text-red-400"><i class="fab fa-instagram"></i></a>
-          <a href="https://tiktok.com/@tu_tienda" target="_blank" class="hover:text-white"><i class="fab fa-tiktok"></i></a>
+        <div class="mt-3 flex justify-center md:justify-start gap-4">
+          <a href="https://facebook.com/tu_tienda" target="_blank" class="social-btn facebook">
+            <i class="fab fa-facebook-f text-white"></i>
+          </a>
+          <a href="https://instagram.com/tu_tienda" target="_blank" class="social-btn instagram">
+            <i class="fab fa-instagram text-white"></i>
+          </a>
+          <a href="https://tiktok.com/@tu_tienda" target="_blank" class="social-btn tiktok">
+            <i class="fab fa-tiktok text-white"></i>
+          </a>
+          <a href="https://wa.me/593999111222" target="_blank" class="social-btn whatsapp">
+            <i class="fab fa-whatsapp text-white"></i>
+          </a>
         </div>
       </div>
       <div class="text-center md:text-right text-gray-300">
@@ -88,9 +223,14 @@
 
   <script>
     const PRODUCTS = [
-      { id: 1, brand: "Samsung", model: "Galaxy S25", price: 899, image: "https://via.placeholder.com/600x400?text=Samsung+S25", features: ["8GB RAM", "256GB", "108MP cámara", "5000mAh"], whatsapp: "593999111222", offer: true },
-      { id: 2, brand: "Apple", model: "iPhone 16", price: 1199, image: "https://via.placeholder.com/600x400?text=iPhone+16", features: ["6GB RAM", "256GB", "48MP cámara", "A18 chip"], whatsapp: "593999333444", offer: false },
-      { id: 3, brand: "Xiaomi", model: "Mi Ultra", price: 699, image: "https://via.placeholder.com/600x400?text=Xiaomi+Ultra", features: ["12GB RAM", "512GB", "200MP cámara", "120W carga rápida"], whatsapp: "593999555666", offer: true },
+      { id: 1, brand: "Samsung", model: "Galaxy S25", price: 899, image: "https://via.placeholder.com/600x400?text=Samsung+S25", features: ["8GB RAM", "256GB", "108MP cámara", "5000mAh"], whatsapp: "593999111222", offer: true, category: "Gama Alta" },
+      { id: 2, brand: "Apple", model: "iPhone 16", price: 1199, image: "https://via.placeholder.com/600x400?text=iPhone+16", features: ["6GB RAM", "256GB", "48MP cámara", "A18 chip"], whatsapp: "593999333444", offer: false, category: "Gama Alta" },
+      { id: 3, brand: "Xiaomi", model: "Mi Ultra", price: 699, image: "https://via.placeholder.com/600x400?text=Xiaomi+Ultra", features: ["12GB RAM", "512GB", "200MP cámara", "120W carga rápida"], whatsapp: "593999555666", offer: true, category: "Gama Alta" },
+      { id: 4, brand: "Samsung", model: "Galaxy A54", price: 399, image: "https://via.placeholder.com/600x400?text=Galaxy+A54", features: ["6GB RAM", "128GB", "64MP cámara", "5000mAh"], whatsapp: "593999777888", offer: false, category: "Gama Media" },
+      { id: 5, brand: "Apple", model: "iPhone SE", price: 499, image: "https://via.placeholder.com/600x400?text=iPhone+SE", features: ["4GB RAM", "128GB", "Touch ID", "Chip A15"], whatsapp: "593999888999", offer: true, category: "Gama Media" },
+      { id: 6, brand: "Xiaomi", model: "Redmi Note", price: 299, image: "https://via.placeholder.com/600x400?text=Redmi+Note", features: ["6GB RAM", "128GB", "AMOLED", "67W carga"], whatsapp: "593999000111", offer: false, category: "Económicos" },
+      { id: 7, brand: "Samsung", model: "Galaxy S22 (Reacondicionado)", price: 549, image: "https://via.placeholder.com/600x400?text=S22+Reacond", features: ["8GB RAM", "256GB", "Garantía 6 meses", "Excelente estado"], whatsapp: "593999222333", offer: true, category: "Reacondicionados" },
+      { id: 8, brand: "Apple", model: "iPhone 13 (Reacondicionado)", price: 649, image: "https://via.placeholder.com/600x400?text=iPhone13+Reacond", features: ["4GB RAM", "128GB", "Garantía 6 meses", "Batería nueva"], whatsapp: "593999444555", offer: false, category: "Reacondicionados" },
     ];
 
     let selectedBrand = "Todos";
@@ -100,60 +240,182 @@
       const showOffers = document.getElementById("showOffersOnly").checked;
       const query = document.getElementById("searchInput").value?.toLowerCase() || "";
       container.innerHTML = "";
-      PRODUCTS.filter(p => (selectedBrand === "Todos" || p.brand === selectedBrand) && (!showOffers || p.offer))
-        .filter(p => !query || p.brand.toLowerCase().includes(query) || p.model.toLowerCase().includes(query) || p.features.join(" ").toLowerCase().includes(query))
-        .forEach(p => {
-          const card = document.createElement("div");
-          card.className = "card bg-white bg-opacity-5 rounded-xl overflow-hidden border border-gray-800 shadow-lg";
-          card.innerHTML = `
-            <div class="relative">
-              <img src="${p.image}" alt="${p.brand} ${p.model}" class="w-full h-56 object-cover">
-              ${p.offer ? `<span class='absolute top-3 left-3 bg-red-600 px-2 py-1 rounded text-xs font-bold'>OFERTA</span>` : ""}
+      
+      const filteredProducts = PRODUCTS.filter(p => 
+        (selectedBrand === "Todos" || p.brand === selectedBrand) && 
+        (!showOffers || p.offer) &&
+        (!query || 
+          p.brand.toLowerCase().includes(query) || 
+          p.model.toLowerCase().includes(query) || 
+          p.features.join(" ").toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query))
+      );
+      
+      if (filteredProducts.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full text-center py-10">
+            <p class="text-xl text-gray-400">No se encontraron productos</p>
+            <button onclick="clearFilters()" class="mt-4 px-4 py-2 bg-red-600 rounded-md btn-anim">Limpiar filtros</button>
+          </div>
+        `;
+        return;
+      }
+      
+      filteredProducts.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "card bg-white bg-opacity-5 rounded-xl overflow-hidden border border-gray-800 shadow-lg fade-in";
+        card.innerHTML = `
+          <div class="relative overflow-hidden">
+            <img src="${p.image}" alt="${p.brand} ${p.model}" class="w-full h-56 object-cover img-hover">
+            ${p.offer ? `<span class='absolute top-3 left-3 bg-red-600 px-2 py-1 rounded text-xs font-bold animate-pulse'>OFERTA</span>` : ""}
+            <span class='absolute top-3 right-3 bg-blue-600 px-2 py-1 rounded text-xs font-bold'>${p.category}</span>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">${p.brand} ${p.model}</h3>
+            <p class="text-sm text-gray-300">${p.features.join(" • ")}</p>
+            <div class="mt-2 flex justify-between items-center">
+              <div class="text-xl font-bold">$${p.price}</div>
+              <div class="text-xs text-gray-400">Pago por WhatsApp</div>
             </div>
-            <div class="p-4">
-              <h3 class="text-lg font-semibold">${p.brand} ${p.model}</h3>
-              <p class="text-sm text-gray-300">${p.features.join(" • ")}</p>
-              <div class="mt-2 flex justify-between items-center">
-                <div class="text-xl font-bold">$${p.price}</div>
-                <div class="text-xs text-gray-400">Pago por WhatsApp</div>
-              </div>
-              <div class="mt-4 flex flex-col sm:flex-row gap-2">
-                <a href="https://wa.me/${p.whatsapp}?text=Hola!%20Quiero%20comprar%20el%20${p.brand}%20${p.model}" target="_blank" class="flex-1 text-center py-2 rounded-md bg-green-600 text-black font-semibold btn-anim">Comprar</a>
-                <button onclick="alert('Añadido al carrito: ${p.brand} ${p.model}')" class="px-3 py-2 rounded-md border border-white/10 btn-anim">Añadir</button>
-              </div>
-            </div>`;
-          container.appendChild(card);
-        });
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+              <a href="https://wa.me/${p.whatsapp}?text=Hola!%20Quiero%20comprar%20el%20${p.brand}%20${p.model}" target="_blank" class="flex-1 text-center py-2 rounded-md bg-green-600 text-black font-semibold btn-anim">Comprar</a>
+              <button onclick="addToCart(${p.id})" class="px-3 py-2 rounded-md border border-white/10 btn-anim">Añadir</button>
+            </div>
+          </div>`;
+        container.appendChild(card);
+      });
+      
+      // Re-inicializar ScrollReveal para las nuevas tarjetas
+      ScrollReveal().reveal('.card', { 
+        interval: 100, 
+        distance: '20px', 
+        origin: 'bottom', 
+        opacity: 0,
+        reset: true
+      });
     }
 
     function renderOffers() {
       const container = document.getElementById("offersContainer");
       container.innerHTML = "";
-      PRODUCTS.filter(p => p.offer).forEach(p => {
-        container.innerHTML += `
-          <div class="p-4 bg-white bg-opacity-5 rounded-lg border border-red-700/30 card">
-            <div class="flex flex-col sm:flex-row gap-4 items-center">
-              <img src="${p.image}" class="w-full sm:w-28 h-40 sm:h-20 object-cover rounded-md" alt="${p.brand} ${p.model}">
-              <div class="text-center sm:text-left">
-                <div class="font-semibold">${p.brand} ${p.model}</div>
-                <div class="text-sm text-gray-300">${p.features.join(" • ")}</div>
-              </div>
-              <div class="ml-auto text-center sm:text-right">
-                <div class="text-lg font-bold">$${p.price}</div>
-                <a href="https://wa.me/${p.whatsapp}?text=Hola!%20Estoy%20interesado%20en%20el%20${p.brand}%20${p.model}" target="_blank" class="mt-2 inline-block px-3 py-1 rounded-md bg-green-600 text-black font-medium btn-anim">Comprar</a>
-              </div>
+      const offers = PRODUCTS.filter(p => p.offer);
+      
+      if (offers.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full text-center py-10">
+            <p class="text-xl text-gray-400">No hay ofertas disponibles en este momento</p>
+          </div>
+        `;
+        return;
+      }
+      
+      offers.forEach(p => {
+        const offerCard = document.createElement("div");
+        offerCard.className = "p-4 bg-white bg-opacity-5 rounded-lg border border-red-700/30 card fade-in";
+        offerCard.innerHTML = `
+          <div class="flex flex-col sm:flex-row gap-4 items-center">
+            <img src="${p.image}" class="w-full sm:w-28 h-40 sm:h-20 object-cover rounded-md img-hover" alt="${p.brand} ${p.model}">
+            <div class="text-center sm:text-left">
+              <div class="font-semibold">${p.brand} ${p.model}</div>
+              <div class="text-sm text-gray-300">${p.features.join(" • ")}</div>
+              <div class="text-xs mt-1 text-blue-400">${p.category}</div>
+            </div>
+            <div class="ml-auto text-center sm:text-right">
+              <div class="text-lg font-bold">$${p.price}</div>
+              <a href="https://wa.me/${p.whatsapp}?text=Hola!%20Estoy%20interesado%20en%20el%20${p.brand}%20${p.model}" target="_blank" class="mt-2 inline-block px-3 py-1 rounded-md bg-green-600 text-black font-medium btn-anim">Comprar</a>
             </div>
           </div>`;
+        container.appendChild(offerCard);
+      });
+      
+      // Re-inicializar ScrollReveal para las ofertas
+      ScrollReveal().reveal('.card', { 
+        interval: 100, 
+        distance: '20px', 
+        origin: 'bottom', 
+        opacity: 0,
+        reset: true
       });
     }
 
-    function filterBrand(brand) { selectedBrand = brand; renderProducts(); }
-    function filterProducts() { renderProducts(); }
+    function filterBrand(brand) { 
+      selectedBrand = brand; 
+      
+      // Actualizar estado visual de los botones de filtro
+      document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('filter-active');
+      });
+      document.getElementById(`filter-${brand.toLowerCase()}`).classList.add('filter-active');
+      
+      renderProducts(); 
+    }
 
+    function filterProducts() { 
+      renderProducts(); 
+    }
+    
+    function clearFilters() {
+      selectedBrand = "Todos";
+      document.getElementById("searchInput").value = "";
+      document.getElementById("showOffersOnly").checked = false;
+      
+      // Actualizar estado visual de los botones de filtro
+      document.querySelectorAll('nav button').forEach(btn => {
+        btn.classList.remove('filter-active');
+      });
+      document.getElementById('filter-todos').classList.add('filter-active');
+      
+      renderProducts();
+    }
+    
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (product) {
+        // Crear notificación visual
+        const notification = document.createElement('div');
+        notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-md shadow-lg z-50 fade-in';
+        notification.innerHTML = `
+          <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>Añadido: ${product.brand} ${product.model}</span>
+          </div>
+        `;
+        document.body.appendChild(notification);
+        
+        // Eliminar notificación después de 3 segundos
+        setTimeout(() => {
+          notification.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+          setTimeout(() => {
+            document.body.removeChild(notification);
+          }, 500);
+        }, 3000);
+      }
+    }
+
+    // Inicialización
     document.getElementById("year").textContent = new Date().getFullYear();
-    renderOffers(); renderProducts();
+    renderOffers(); 
+    renderProducts();
 
-    ScrollReveal().reveal('.card', { interval: 100, distance: '20px', origin: 'bottom', opacity: 0 });
+    // Configuración mejorada de ScrollReveal
+    ScrollReveal({ 
+      distance: '30px',
+      duration: 800,
+      easing: 'cubic-bezier(0.5, 0, 0, 1)',
+      interval: 100
+    });
+    
+    ScrollReveal().reveal('.fade-in', { 
+      origin: 'bottom',
+      opacity: 0,
+      delay: 200
+    });
+    
+    ScrollReveal().reveal('.card', { 
+      origin: 'bottom',
+      opacity: 0,
+      interval: 100
+    });
   </script>
 </body>
 </html>
