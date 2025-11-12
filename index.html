@@ -131,10 +131,32 @@
       min-width: 300px;
       flex-shrink: 0;
     }
+
+    /* WhatsApp flotante */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
   </style>
 </head>
 
 <body class="antialiased">
+  <!-- WhatsApp flotante -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" style="width: 60px; height: 60px; font-size: 1.5rem;">
+      <i class="fab fa-whatsapp text-white"></i>
+    </a>
+  </div>
+
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-gradient-to-r from-red-800 via-black to-green-900 border-b border-red-700/50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -172,6 +194,13 @@
       <h2 class="text-4xl sm:text-5xl font-extrabold fade-in">TECNOSAM</h2>
       <p class="mt-4 text-gray-200 text-xl fade-in">Tu tienda de confianza en tecnología móvil</p>
       <p class="mt-2 text-gray-300 fade-in">Los mejores precios y la mejor calidad garantizada</p>
+      
+      <!-- Información de contacto -->
+      <div class="mt-6 bg-white/5 rounded-lg p-4 inline-block fade-in">
+        <p class="text-green-400 font-semibold">📞 Contacta por WhatsApp</p>
+        <p class="text-sm text-gray-300 mt-1">+593 95 868 8163 • +593 95 868 8163</p>
+      </div>
+      
       <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
         <a href="#productos" class="px-6 py-3 rounded-full bg-green-500 font-semibold shadow-lg btn-anim">Ver catálogo</a>
         <a href="#ofertas" class="px-6 py-3 rounded-full border border-white/20 btn-anim">Ofertas especiales</a>
@@ -188,7 +217,7 @@
         <a href="https://tiktok.com/@tecnosam" target="_blank" class="social-btn tiktok" title="TikTok">
           <i class="fab fa-tiktok text-white"></i>
         </a>
-        <a href="https://wa.me/593999111222" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+        <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" title="WhatsApp">
           <i class="fab fa-whatsapp text-white"></i>
         </a>
       </div>
@@ -305,6 +334,8 @@
       <div class="text-center md:text-left">
         <div class="font-bold text-white text-xl mb-2">TECNOSAM</div>
         <div class="text-gray-300">Tecnología de Vanguardia</div>
+        <div class="mt-2 text-green-400 font-semibold">📞 WhatsApp: +593 95 868 8163</div>
+        <div class="mt-1 text-green-400 font-semibold">📞 WhatsApp: +593 95 868 8163</div>
         <div class="mt-2">Contacto: <a href="mailto:ventas@tecnosam.com" class="underline text-green-400">ventas@tecnosam.com</a></div>
         <div class="mt-4 flex justify-center md:justify-start gap-3">
           <a href="https://www.facebook.com/tecnosam2022/" target="_blank" class="social-btn facebook" title="Facebook">
@@ -316,7 +347,7 @@
           <a href="https://tiktok.com/@tecnosam" target="_blank" class="social-btn tiktok" title="TikTok">
             <i class="fab fa-tiktok text-white"></i>
           </a>
-          <a href="https://wa.me/593999111222" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+          <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" title="WhatsApp">
             <i class="fab fa-whatsapp text-white"></i>
           </a>
         </div>
@@ -331,8 +362,20 @@
   </footer>
 
   <script>
+    // Números de WhatsApp funcionales
+    const whatsappNumbers = [
+      '593958688163',
+      '593958688163'
+    ];
+
     let products = [];
     let selectedBrand = "Todos";
+
+    // Función para obtener un número de WhatsApp aleatorio
+    function getRandomWhatsApp() {
+      const randomIndex = Math.floor(Math.random() * whatsappNumbers.length);
+      return whatsappNumbers[randomIndex];
+    }
 
     // Función para cargar productos desde CSV
     async function loadProductsFromCSV() {
@@ -345,20 +388,35 @@
         const csvText = await response.text();
         products = parseCSV(csvText);
         
+        // Asignar números de WhatsApp aleatorios a los productos
+        products.forEach(product => {
+          product.whatsapp = getRandomWhatsApp();
+        });
+        
         renderOffers();
         renderProducts();
       } catch (error) {
         console.error('Error cargando productos:', error);
-        // No cargamos productos de ejemplo, solo mostramos mensaje
         document.getElementById('productsContainer').innerHTML = `
           <div class="col-span-full text-center py-10">
             <p class="text-xl text-gray-400">No hay productos disponibles</p>
             <p class="text-gray-500 mt-2">Agrega productos en el archivo productos.csv</p>
+            <div class="mt-4 bg-white/5 rounded-lg p-4 inline-block">
+              <p class="text-green-400 font-semibold">📞 Contacta por WhatsApp</p>
+              <p class="text-sm text-gray-300 mt-1">+593 95 868 8163 • +593 95 868 8163</p>
+              <a href="https://wa.me/593958688163" target="_blank" class="mt-2 inline-block px-4 py-2 bg-green-600 text-black font-semibold rounded-md btn-anim">
+                <i class="fab fa-whatsapp mr-2"></i>Contactar Ahora
+              </a>
+            </div>
           </div>
         `;
         document.getElementById('offersContainer').innerHTML = `
-          <div class="col-span-full text-center py-10">
+          <div class="text-center py-10 min-w-full">
             <p class="text-xl text-gray-400">No hay ofertas disponibles</p>
+            <div class="mt-4 bg-white/5 rounded-lg p-4 inline-block">
+              <p class="text-green-400 font-semibold">📞 Consulta nuestras ofertas</p>
+              <p class="text-sm text-gray-300 mt-1">+593 95 868 8163 • +593 95 868 8163</p>
+            </div>
           </div>
         `;
       }
