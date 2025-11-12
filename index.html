@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tienda Celulares</title>
+  <title>TECNOSAM - Tienda de Celulares</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/scrollreveal"></script>
   <script src="https://kit.fontawesome.com/a2d9c5e6cc.js" crossorigin="anonymous"></script>
@@ -63,13 +63,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       margin: 0 5px;
+      font-size: 1.2rem;
     }
     .social-btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-3px) scale(1.1);
     }
     .facebook { background-color: #3b5998; }
     .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
@@ -101,25 +102,62 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    /* Scroll horizontal para ofertas */
+    .offers-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: #dc2626 #1f2937;
+    }
+
+    .offers-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .offers-scroll::-webkit-scrollbar-track {
+      background: #1f2937;
+      border-radius: 10px;
+    }
+
+    .offers-scroll::-webkit-scrollbar-thumb {
+      background: #dc2626;
+      border-radius: 10px;
+    }
+
+    .offer-card {
+      min-width: 300px;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 
 <body class="antialiased">
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-gradient-to-r from-red-800 via-black to-green-900 border-b border-red-700/50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <div onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-4 cursor-pointer">
-        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-bold text-lg shadow-lg hover:scale-110 transition-transform duration-300">TC</div>
+        <div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center font-bold text-lg shadow-lg hover:scale-110 transition-transform duration-300">
+          <span class="text-white">TS</span>
+        </div>
         <div>
-          <h1 class="text-xl font-extrabold tracking-tight">Tienda Celulares</h1>
-          <p class="text-xs text-gray-300">Compra fácil vía WhatsApp</p>
+          <h1 class="text-xl font-extrabold tracking-tight">TECNOSAM</h1>
+          <p class="text-xs text-gray-300">Tecnología de Vanguardia</p>
         </div>
       </div>
-      <nav class="hidden md:flex gap-3">
+      <nav class="hidden lg:flex gap-2">
         <button onclick="filterBrand('Todos')" id="filter-todos" class="px-3 py-2 rounded-md bg-red-600/80 text-sm font-medium filter-active">Todos</button>
         <button onclick="filterBrand('Samsung')" id="filter-samsung" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Samsung</button>
         <button onclick="filterBrand('Apple')" id="filter-apple" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Apple</button>
         <button onclick="filterBrand('Xiaomi')" id="filter-xiaomi" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Xiaomi</button>
+        <button onclick="filterBrand('Motorola')" id="filter-motorola" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Motorola</button>
+        <button onclick="filterBrand('Pocophone')" id="filter-pocophone" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Pocophone</button>
+        <button onclick="filterBrand('Honor')" id="filter-honor" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Honor</button>
+        <button onclick="filterBrand('Realme')" id="filter-realme" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Realme</button>
+        <button onclick="filterBrand('Tecno')" id="filter-tecno" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Tecno</button>
+        <button onclick="filterBrand('Infinix')" id="filter-infinix" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Infinix</button>
       </nav>
       <div class="flex items-center gap-3">
         <input id="searchInput" onkeyup="filterProducts()" placeholder="Buscar..." class="hidden sm:inline-block bg-white/10 px-3 py-2 rounded-md text-sm outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300">
@@ -129,72 +167,111 @@
   </header>
 
   <!-- Hero -->
-  <section class="bg-[url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=60')] bg-cover bg-center">
-    <div class="backdrop-brightness-50 py-20 text-center">
-      <h2 class="text-4xl sm:text-5xl font-extrabold fade-in">Los mejores celulares al alcance</h2>
-      <p class="mt-4 text-gray-200 max-w-xl mx-auto fade-in">Precios transparentes, pago y contacto directo por WhatsApp. Ofertas semanales y envío a todo el país.</p>
+  <section class="bg-gradient-to-r from-red-900 via-black to-green-900 py-20 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl sm:text-5xl font-extrabold fade-in">TECNOSAM</h2>
+      <p class="mt-4 text-gray-200 text-xl fade-in">Tu tienda de confianza en tecnología móvil</p>
+      <p class="mt-2 text-gray-300 fade-in">Los mejores precios y la mejor calidad garantizada</p>
       <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
         <a href="#productos" class="px-6 py-3 rounded-full bg-green-500 font-semibold shadow-lg btn-anim">Ver catálogo</a>
-        <a href="#ofertas" class="px-6 py-3 rounded-full border border-white/20 btn-anim">Ofertas</a>
+        <a href="#ofertas" class="px-6 py-3 rounded-full border border-white/20 btn-anim">Ofertas especiales</a>
       </div>
       
       <!-- Botones de redes sociales en el hero -->
       <div class="mt-8 flex justify-center gap-4">
-        <a href="https://facebook.com/tu_tienda" target="_blank" class="social-btn facebook">
+        <a href="https://www.facebook.com/tecnosam2022/" target="_blank" class="social-btn facebook" title="Facebook">
           <i class="fab fa-facebook-f text-white"></i>
         </a>
-        <a href="https://instagram.com/tu_tienda" target="_blank" class="social-btn instagram">
+        <a href="https://instagram.com/tecnosam" target="_blank" class="social-btn instagram" title="Instagram">
           <i class="fab fa-instagram text-white"></i>
         </a>
-        <a href="https://tiktok.com/@tu_tienda" target="_blank" class="social-btn tiktok">
+        <a href="https://tiktok.com/@tecnosam" target="_blank" class="social-btn tiktok" title="TikTok">
           <i class="fab fa-tiktok text-white"></i>
         </a>
-        <a href="https://wa.me/593999111222" target="_blank" class="social-btn whatsapp">
+        <a href="https://wa.me/593999111222" target="_blank" class="social-btn whatsapp" title="WhatsApp">
           <i class="fab fa-whatsapp text-white"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Categorías -->
-  <section class="max-w-6xl mx-auto px-4 py-8">
-    <h2 class="text-2xl font-bold text-center mb-8 fade-in">Categorías de Celulares</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-6 text-center border border-gray-800">
-        <div class="w-16 h-16 mx-auto mb-4 bg-blue-500 rounded-full flex items-center justify-center">
-          <i class="fas fa-mobile-alt text-white text-2xl"></i>
+  <!-- Marcas Disponibles -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center mb-12 fade-in">Marcas Disponibles</h2>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-6">
+      <!-- Samsung -->
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Samsung')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-blue-500 rounded-full flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" class="w-10 h-10 filter brightness-0 invert">
         </div>
-        <h3 class="font-semibold">Gama Alta</h3>
-        <p class="text-sm text-gray-300 mt-2">Los mejores equipos con tecnología de punta</p>
+        <h3 class="font-semibold text-sm">Samsung</h3>
       </div>
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-6 text-center border border-gray-800">
-        <div class="w-16 h-16 mx-auto mb-4 bg-green-500 rounded-full flex items-center justify-center">
-          <i class="fas fa-chart-line text-white text-2xl"></i>
+      
+      <!-- Apple -->
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Apple')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-gray-800 rounded-full flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" class="w-8 h-10 filter brightness-0 invert">
         </div>
-        <h3 class="font-semibold">Gama Media</h3>
-        <p class="text-sm text-gray-300 mt-2">Excelente relación calidad-precio</p>
+        <h3 class="font-semibold text-sm">Apple</h3>
       </div>
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-6 text-center border border-gray-800">
-        <div class="w-16 h-16 mx-auto mb-4 bg-yellow-500 rounded-full flex items-center justify-center">
-          <i class="fas fa-dollar-sign text-white text-2xl"></i>
+      
+      <!-- Xiaomi -->
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Xiaomi')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-orange-500 rounded-full flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi" class="w-10 h-10">
         </div>
-        <h3 class="font-semibold">Económicos</h3>
-        <p class="text-sm text-gray-300 mt-2">Calidad a precios accesibles</p>
+        <h3 class="font-semibold text-sm">Xiaomi</h3>
       </div>
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-6 text-center border border-gray-800">
-        <div class="w-16 h-16 mx-auto mb-4 bg-red-500 rounded-full flex items-center justify-center">
-          <i class="fas fa-gem text-white text-2xl"></i>
+      
+      <!-- Motorola -->
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Motorola')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Motorola_M_logo.svg" alt="Motorola" class="w-10 h-10">
         </div>
-        <h3 class="font-semibold">Reacondicionados</h3>
-        <p class="text-sm text-gray-300 mt-2">Excelente estado con garantía</p>
+        <h3 class="font-semibold text-sm">Motorola</h3>
+      </div>
+      
+      <!-- Pocophone -->
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Pocophone')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-yellow-500 rounded-full flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Poco_logo.svg" alt="Pocophone" class="w-10 h-10">
+        </div>
+        <h3 class="font-semibold text-sm">Pocophone</h3>
+      </div>
+      
+      <!-- Honor -->
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Honor')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-red-600 rounded-full flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Honor_logo.svg" alt="Honor" class="w-10 h-10 filter brightness-0 invert">
+        </div>
+        <h3 class="font-semibold text-sm">Honor</h3>
+      </div>
+      
+      <!-- Realme -->
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Realme')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-yellow-400 rounded-full flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Realme_logo.svg" alt="Realme" class="w-10 h-10">
+        </div>
+        <h3 class="font-semibold text-sm">Realme</h3>
+      </div>
+      
+      <!-- Tecno -->
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Tecno')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-blue-600 rounded-full flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/TECNO_Mobile_logo.svg" alt="Tecno" class="w-10 h-10 filter brightness-0 invert">
+        </div>
+        <h3 class="font-semibold text-sm">Tecno</h3>
       </div>
     </div>
   </section>
 
   <!-- Ofertas -->
-  <section id="ofertas" class="max-w-6xl mx-auto px-4 py-8">
-    <h3 class="text-2xl font-bold text-red-400 fade-in">Ofertas destacadas</h3>
-    <div id="offersContainer" class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <section id="ofertas" class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-2xl font-bold text-red-400 fade-in">Ofertas Destacadas</h3>
+      <p class="text-sm text-gray-400">Desplaza para ver más ofertas →</p>
+    </div>
+    <div id="offersContainer" class="offers-scroll">
       <div class="text-center py-10">
         <div class="loader"></div>
         <p class="text-gray-400 mt-4">Cargando ofertas...</p>
@@ -203,15 +280,18 @@
   </section>
 
   <!-- Productos -->
-  <main id="productos" class="max-w-6xl mx-auto px-4 py-8">
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-2">
-      <h2 class="text-2xl font-bold fade-in">Catálogo</h2>
-      <label class="flex items-center gap-2 text-sm fade-in">
-        <input type="checkbox" id="showOffersOnly" onchange="renderProducts()"> 
-        Solo ofertas
-      </label>
+  <main id="productos" class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
+      <h2 class="text-2xl font-bold fade-in">Catálogo Completo</h2>
+      <div class="flex items-center gap-4">
+        <label class="flex items-center gap-2 text-sm fade-in">
+          <input type="checkbox" id="showOffersOnly" onchange="renderProducts()"> 
+          Solo ofertas
+        </label>
+        <input id="searchInput" onkeyup="filterProducts()" placeholder="Buscar productos..." class="bg-white/10 px-3 py-2 rounded-md text-sm outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 w-48">
+      </div>
     </div>
-    <div id="productsContainer" class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="productsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <div class="text-center py-10 col-span-full">
         <div class="loader"></div>
         <p class="text-gray-400 mt-4">Cargando productos...</p>
@@ -221,28 +301,31 @@
 
   <!-- Footer -->
   <footer class="mt-12 bg-gradient-to-t from-black to-transparent border-t border-red-900/20">
-    <div class="max-w-6xl mx-auto px-4 py-8 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="max-w-7xl mx-auto px-4 py-8 text-sm flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="text-center md:text-left">
-        <div class="font-bold text-white text-lg">Tienda Celulares</div>
-        <div>Contacto: <a href="mailto:ventas@tiendacelulares.example" class="underline">ventas@tiendacelulares.example</a></div>
-        <div class="mt-3 flex justify-center md:justify-start gap-4">
-          <a href="https://facebook.com/tu_tienda" target="_blank" class="social-btn facebook">
+        <div class="font-bold text-white text-xl mb-2">TECNOSAM</div>
+        <div class="text-gray-300">Tecnología de Vanguardia</div>
+        <div class="mt-2">Contacto: <a href="mailto:ventas@tecnosam.com" class="underline text-green-400">ventas@tecnosam.com</a></div>
+        <div class="mt-4 flex justify-center md:justify-start gap-3">
+          <a href="https://www.facebook.com/tecnosam2022/" target="_blank" class="social-btn facebook" title="Facebook">
             <i class="fab fa-facebook-f text-white"></i>
           </a>
-          <a href="https://instagram.com/tu_tienda" target="_blank" class="social-btn instagram">
+          <a href="https://instagram.com/tecnosam" target="_blank" class="social-btn instagram" title="Instagram">
             <i class="fab fa-instagram text-white"></i>
           </a>
-          <a href="https://tiktok.com/@tu_tienda" target="_blank" class="social-btn tiktok">
+          <a href="https://tiktok.com/@tecnosam" target="_blank" class="social-btn tiktok" title="TikTok">
             <i class="fab fa-tiktok text-white"></i>
           </a>
-          <a href="https://wa.me/593999111222" target="_blank" class="social-btn whatsapp">
+          <a href="https://wa.me/593999111222" target="_blank" class="social-btn whatsapp" title="WhatsApp">
             <i class="fab fa-whatsapp text-white"></i>
           </a>
         </div>
       </div>
       <div class="text-center md:text-right text-gray-300">
-        <div>Medios de pago: Pago por WhatsApp</div>
-        <div class="mt-2">© <span id="year"></span> Tienda Celulares</div>
+        <div class="text-lg font-semibold mb-2">Medios de pago</div>
+        <div>Transferencias • Efectivo • Tarjetas</div>
+        <div class="mt-2 text-green-400">Pago seguro por WhatsApp</div>
+        <div class="mt-4">© <span id="year"></span> TECNOSAM - Todos los derechos reservados</div>
       </div>
     </div>
   </footer>
@@ -254,7 +337,6 @@
     // Función para cargar productos desde CSV
     async function loadProductsFromCSV() {
       try {
-        // En un entorno real, esta URL sería la ruta a tu archivo CSV
         const response = await fetch('productos.csv');
         if (!response.ok) {
           throw new Error('No se pudo cargar el archivo CSV');
@@ -263,23 +345,31 @@
         const csvText = await response.text();
         products = parseCSV(csvText);
         
-        // Una vez cargados los productos, renderizamos
         renderOffers();
         renderProducts();
       } catch (error) {
         console.error('Error cargando productos:', error);
-        // Si hay error, cargamos productos de ejemplo
-        loadSampleProducts();
+        // No cargamos productos de ejemplo, solo mostramos mensaje
+        document.getElementById('productsContainer').innerHTML = `
+          <div class="col-span-full text-center py-10">
+            <p class="text-xl text-gray-400">No hay productos disponibles</p>
+            <p class="text-gray-500 mt-2">Agrega productos en el archivo productos.csv</p>
+          </div>
+        `;
+        document.getElementById('offersContainer').innerHTML = `
+          <div class="col-span-full text-center py-10">
+            <p class="text-xl text-gray-400">No hay ofertas disponibles</p>
+          </div>
+        `;
       }
     }
 
-    // Función para parsear CSV con formato específico (punto y coma, VERDADERO/FALSO)
+    // Función para parsear CSV
     function parseCSV(csvText) {
       const lines = csvText.split('\n').filter(line => line.trim() !== '');
       const headers = lines[0].split(';').map(header => header.trim());
       
       return lines.slice(1).map(line => {
-        // Manejar campos entre comillas que contienen punto y coma
         const values = [];
         let currentValue = '';
         let insideQuotes = false;
@@ -308,10 +398,8 @@
           } else if (header === 'price') {
             product[header] = parseFloat(value);
           } else if (header === 'offer') {
-            // Convertir VERDADERO/FALSO a boolean
             product[header] = value.toUpperCase() === 'VERDADERO';
           } else if (header === 'features') {
-            // Limpiar comillas y dividir por punto y coma
             const cleanedFeatures = value.replace(/^"|"$/g, '');
             product[header] = cleanedFeatures.split(';').map(f => f.trim());
           } else {
@@ -323,21 +411,6 @@
       });
     }
 
-    // Función para cargar productos de ejemplo si no hay CSV
-    function loadSampleProducts() {
-      products = [
-        { id: 1, brand: "Samsung", model: "Galaxy S25", price: 899, image: "https://via.placeholder.com/600x400?text=Samsung+S25", features: ["8GB RAM", "256GB", "108MP cámara", "5000mAh"], whatsapp: "593999111222", offer: true, category: "Gama Alta" },
-        { id: 2, brand: "Apple", model: "iPhone 16", price: 1199, image: "https://via.placeholder.com/600x400?text=iPhone+16", features: ["6GB RAM", "256GB", "48MP cámara", "A18 chip"], whatsapp: "593999333444", offer: false, category: "Gama Alta" },
-        { id: 3, brand: "Xiaomi", model: "Mi Ultra", price: 699, image: "https://via.placeholder.com/600x400?text=Xiaomi+Ultra", features: ["12GB RAM", "512GB", "200MP cámara", "120W carga rápida"], whatsapp: "593999555666", offer: true, category: "Gama Alta" },
-        { id: 4, brand: "Samsung", model: "Galaxy A54", price: 399, image: "https://via.placeholder.com/600x400?text=Galaxy+A54", features: ["6GB RAM", "128GB", "64MP cámara", "5000mAh"], whatsapp: "593999777888", offer: false, category: "Gama Media" },
-        { id: 5, brand: "Apple", model: "iPhone SE", price: 499, image: "https://via.placeholder.com/600x400?text=iPhone+SE", features: ["4GB RAM", "128GB", "Touch ID", "Chip A15"], whatsapp: "593999888999", offer: true, category: "Gama Media" },
-        { id: 6, brand: "Xiaomi", model: "Redmi Note", price: 299, image: "https://via.placeholder.com/600x400?text=Redmi+Note", features: ["6GB RAM", "128GB", "AMOLED", "67W carga"], whatsapp: "593999000111", offer: false, category: "Económicos" },
-      ];
-      
-      renderOffers();
-      renderProducts();
-    }
-
     function renderProducts() {
       const container = document.getElementById("productsContainer");
       const showOffers = document.getElementById("showOffersOnly").checked;
@@ -347,8 +420,8 @@
       if (products.length === 0) {
         container.innerHTML = `
           <div class="col-span-full text-center py-10">
-            <div class="loader"></div>
-            <p class="text-gray-400 mt-4">Cargando productos...</p>
+            <p class="text-xl text-gray-400">No hay productos disponibles</p>
+            <p class="text-gray-500 mt-2">Agrega productos en el archivo productos.csv</p>
           </div>
         `;
         return;
@@ -379,26 +452,29 @@
         card.className = "card bg-white bg-opacity-5 rounded-xl overflow-hidden border border-gray-800 shadow-lg fade-in";
         card.innerHTML = `
           <div class="relative overflow-hidden">
-            <img src="${p.image}" alt="${p.brand} ${p.model}" class="w-full h-56 object-cover img-hover">
+            <img src="${p.image}" alt="${p.brand} ${p.model}" class="w-full h-48 object-cover img-hover">
             ${p.offer ? `<span class='absolute top-3 left-3 bg-red-600 px-2 py-1 rounded text-xs font-bold animate-pulse'>OFERTA</span>` : ""}
-            ${p.category ? `<span class='absolute top-3 right-3 bg-blue-600 px-2 py-1 rounded text-xs font-bold'>${p.category}</span>` : ""}
+            <span class='absolute top-3 right-3 bg-blue-600 px-2 py-1 rounded text-xs font-bold'>${p.brand}</span>
           </div>
           <div class="p-4">
-            <h3 class="text-lg font-semibold">${p.brand} ${p.model}</h3>
-            <p class="text-sm text-gray-300">${Array.isArray(p.features) ? p.features.join(" • ") : p.features}</p>
-            <div class="mt-2 flex justify-between items-center">
-              <div class="text-xl font-bold">$${p.price}</div>
-              <div class="text-xs text-gray-400">Pago por WhatsApp</div>
+            <h3 class="text-lg font-semibold">${p.model}</h3>
+            <p class="text-sm text-gray-300 mt-1">${Array.isArray(p.features) ? p.features.join(" • ") : p.features}</p>
+            <div class="mt-3 flex justify-between items-center">
+              <div class="text-xl font-bold text-green-400">$${p.price}</div>
+              <div class="text-xs text-gray-400">Pago seguro</div>
             </div>
             <div class="mt-4 flex flex-col sm:flex-row gap-2">
-              <a href="https://wa.me/${p.whatsapp}?text=Hola!%20Quiero%20comprar%20el%20${p.brand}%20${p.model}" target="_blank" class="flex-1 text-center py-2 rounded-md bg-green-600 text-black font-semibold btn-anim">Comprar</a>
-              <button onclick="addToCart(${p.id})" class="px-3 py-2 rounded-md border border-white/10 btn-anim">Añadir</button>
+              <a href="https://wa.me/${p.whatsapp}?text=Hola TECNOSAM!%20Quiero%20comprar%20el%20${p.brand}%20${p.model}%20por%20$${p.price}" target="_blank" class="flex-1 text-center py-2 rounded-md bg-green-600 text-black font-semibold btn-anim">
+                <i class="fab fa-whatsapp mr-2"></i>Comprar
+              </a>
+              <button onclick="addToCart(${p.id})" class="px-3 py-2 rounded-md border border-white/10 btn-anim">
+                <i class="fas fa-shopping-cart mr-2"></i>Añadir
+              </button>
             </div>
           </div>`;
         container.appendChild(card);
       });
       
-      // Re-inicializar ScrollReveal para las nuevas tarjetas
       ScrollReveal().reveal('.card', { 
         interval: 100, 
         distance: '20px', 
@@ -414,9 +490,8 @@
       
       if (products.length === 0) {
         container.innerHTML = `
-          <div class="col-span-full text-center py-10">
-            <div class="loader"></div>
-            <p class="text-gray-400 mt-4">Cargando ofertas...</p>
+          <div class="text-center py-10 min-w-full">
+            <p class="text-xl text-gray-400">No hay ofertas disponibles</p>
           </div>
         `;
         return;
@@ -426,8 +501,9 @@
       
       if (offers.length === 0) {
         container.innerHTML = `
-          <div class="col-span-full text-center py-10">
-            <p class="text-xl text-gray-400">No hay ofertas disponibles en este momento</p>
+          <div class="text-center py-10 min-w-full">
+            <p class="text-xl text-gray-400">No hay ofertas disponibles</p>
+            <p class="text-gray-500 mt-2">Agrega productos en oferta en el CSV</p>
           </div>
         `;
         return;
@@ -435,24 +511,22 @@
       
       offers.forEach(p => {
         const offerCard = document.createElement("div");
-        offerCard.className = "p-4 bg-white bg-opacity-5 rounded-lg border border-red-700/30 card fade-in";
+        offerCard.className = "offer-card p-4 bg-white bg-opacity-5 rounded-lg border border-red-700/30 card fade-in";
         offerCard.innerHTML = `
           <div class="flex flex-col sm:flex-row gap-4 items-center">
-            <img src="${p.image}" class="w-full sm:w-28 h-40 sm:h-20 object-cover rounded-md img-hover" alt="${p.brand} ${p.model}">
-            <div class="text-center sm:text-left">
-              <div class="font-semibold">${p.brand} ${p.model}</div>
-              <div class="text-sm text-gray-300">${Array.isArray(p.features) ? p.features.join(" • ") : p.features}</div>
-              ${p.category ? `<div class="text-xs mt-1 text-blue-400">${p.category}</div>` : ""}
-            </div>
-            <div class="ml-auto text-center sm:text-right">
-              <div class="text-lg font-bold">$${p.price}</div>
-              <a href="https://wa.me/${p.whatsapp}?text=Hola!%20Estoy%20interesado%20en%20el%20${p.brand}%20${p.model}" target="_blank" class="mt-2 inline-block px-3 py-1 rounded-md bg-green-600 text-black font-medium btn-anim">Comprar</a>
+            <img src="${p.image}" class="w-24 h-24 object-cover rounded-md img-hover" alt="${p.brand} ${p.model}">
+            <div class="flex-1 text-center sm:text-left">
+              <div class="font-semibold text-lg">${p.brand} ${p.model}</div>
+              <div class="text-sm text-gray-300 mt-1">${Array.isArray(p.features) ? p.features.join(" • ") : p.features}</div>
+              <div class="text-lg font-bold text-green-400 mt-2">$${p.price}</div>
+              <a href="https://wa.me/${p.whatsapp}?text=Hola TECNOSAM!%20Estoy%20interesado%20en%20la%20oferta%20del%20${p.brand}%20${p.model}%20por%20$${p.price}" target="_blank" class="mt-3 inline-block px-4 py-2 rounded-md bg-green-600 text-black font-medium btn-anim">
+                <i class="fab fa-whatsapp mr-2"></i>Comprar Oferta
+              </a>
             </div>
           </div>`;
         container.appendChild(offerCard);
       });
       
-      // Re-inicializar ScrollReveal para las ofertas
       ScrollReveal().reveal('.card', { 
         interval: 100, 
         distance: '20px', 
@@ -465,11 +539,13 @@
     function filterBrand(brand) { 
       selectedBrand = brand; 
       
-      // Actualizar estado visual de los botones de filtro
       document.querySelectorAll('nav button').forEach(btn => {
         btn.classList.remove('filter-active');
       });
-      document.getElementById(`filter-${brand.toLowerCase()}`).classList.add('filter-active');
+      const filterButton = document.getElementById(`filter-${brand.toLowerCase()}`);
+      if (filterButton) {
+        filterButton.classList.add('filter-active');
+      }
       
       renderProducts(); 
     }
@@ -483,7 +559,6 @@
       document.getElementById("searchInput").value = "";
       document.getElementById("showOffersOnly").checked = false;
       
-      // Actualizar estado visual de los botones de filtro
       document.querySelectorAll('nav button').forEach(btn => {
         btn.classList.remove('filter-active');
       });
@@ -495,7 +570,6 @@
     function addToCart(productId) {
       const product = products.find(p => p.id === productId);
       if (product) {
-        // Crear notificación visual
         const notification = document.createElement('div');
         notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-md shadow-lg z-50 fade-in';
         notification.innerHTML = `
@@ -506,7 +580,6 @@
         `;
         document.body.appendChild(notification);
         
-        // Eliminar notificación después de 3 segundos
         setTimeout(() => {
           notification.classList.add('opacity-0', 'transition-opacity', 'duration-500');
           setTimeout(() => {
@@ -518,11 +591,8 @@
 
     // Inicialización
     document.getElementById("year").textContent = new Date().getFullYear();
-    
-    // Cargar productos al iniciar
     loadProductsFromCSV();
 
-    // Configuración mejorada de ScrollReveal
     ScrollReveal({ 
       distance: '30px',
       duration: 800,
@@ -534,12 +604,6 @@
       origin: 'bottom',
       opacity: 0,
       delay: 200
-    });
-    
-    ScrollReveal().reveal('.card', { 
-      origin: 'bottom',
-      opacity: 0,
-      interval: 100
     });
   </script>
 </body>
