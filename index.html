@@ -139,11 +139,11 @@
 
 <body class="min-h-screen flex flex-col antialiased">
   <!-- WhatsApp flotante -->
-  <div class="whatsapp-float">
-    <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" style="width: 60px; height: 60px; font-size: 1.5rem;">
-      <i class="fab fa-whatsapp text-white"></i>
-    </a>
-  </div>
+<div class="whatsapp-float">
+  <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" style="width: 60px; height: 60px; font-size: 1.5rem;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-8 h-8">
+  </a>
+</div>
 
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-gradient-to-r from-red-800 via-black to-green-900 border-b border-red-700/50">
@@ -157,18 +157,48 @@
           <p class="text-xs text-gray-300">Tecnología de Vanguardia</p>
         </div>
       </div>
-      <nav class="hidden lg:flex gap-2">
-        <button onclick="filterBrand('Todos')" id="filter-todos" class="px-3 py-2 rounded-md bg-red-600/80 text-sm font-medium filter-active">Todos</button>
-        <button onclick="filterBrand('Samsung')" id="filter-samsung" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Samsung</button>
-        <button onclick="filterBrand('Apple')" id="filter-apple" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Apple</button>
-        <button onclick="filterBrand('Xiaomi')" id="filter-xiaomi" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Xiaomi</button>
-        <button onclick="filterBrand('Motorola')" id="filter-motorola" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Motorola</button>
-        <button onclick="filterBrand('Pocophone')" id="filter-pocophone" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Pocophone</button>
-        <button onclick="filterBrand('Honor')" id="filter-honor" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Honor</button>
-        <button onclick="filterBrand('Realme')" id="filter-realme" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Realme</button>
-        <button onclick="filterBrand('Tecno')" id="filter-tecno" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Tecno</button>
-        <button onclick="filterBrand('Infinix')" id="filter-infinix" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm">Infinix</button>
-      </nav>
+    <nav class="hidden lg:flex gap-2">
+  <button onclick="filterBrand('Todos')" id="filter-todos" class="px-3 py-2 rounded-md bg-red-600/80 text-sm font-medium filter-active flex items-center gap-2">
+    <i class="fas fa-layer-group w-4 h-4"></i>
+    Todos
+  </button>
+  <button onclick="filterBrand('Samsung')" id="filter-samsung" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://static.showit.co/file/SqAIpW6pSY6Ga8EOSig5Xw/84961/logo_s_te-leuk-eventdesign-klanten-02.png" alt="Samsung" class="w-4 h-4 filter brightness-0 invert">
+    Samsung
+  </button>
+  <button onclick="filterBrand('Apple')" id="filter-apple" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ed3d547-94ff-48e1-9f20-8c14a7030a02_2000x2000.jpeg" alt="Apple" class="w-3 h-4 filter brightness-0 invert">
+    Apple
+  </button>
+  <button onclick="filterBrand('Xiaomi')" id="filter-xiaomi" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://logos-marcas.com/wp-content/uploads/2021/04/Xiaomi-Logo.jpg" alt="Xiaomi" class="w-4 h-4">
+    Xiaomi
+  </button>
+  <button onclick="filterBrand('Motorola')" id="filter-motorola" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://static.vecteezy.com/system/resources/previews/020/927/440/original/motorola-brand-logo-phone-symbol-with-name-white-design-usa-mobile-illustration-with-black-background-free-vector.jpg" alt="Motorola" class="w-4 h-4">
+    Motorola
+  </button>
+  <button onclick="filterBrand('Pocophone')" id="filter-pocophone" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.1T3u3Zb69EoxqvyMQYfbLQHaEK?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pocophone" class="w-4 h-4">
+    Pocophone
+  </button>
+  <button onclick="filterBrand('Honor')" id="filter-honor" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://tiendahonorgt.com/wp-content/uploads/2023/02/HONOR-LOGO_BLACK.png" alt="Honor" class="w-4 h-4 filter brightness-0 invert">
+    Honor
+  </button>
+  <button onclick="filterBrand('Realme')" id="filter-realme" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://ph-test-11.slatic.net/shop/9cb7d0f6b0bf5f7ddd1e7060ded658a8.png" alt="Realme" class="w-4 h-4">
+    Realme
+  </button>
+  <button onclick="filterBrand('Tecno')" id="filter-tecno" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://whoistheownerof.com/wp-content/uploads/2018/03/owner-of-Tecno-Mobile-India-Wiki-and-Logo-788x689.jpg" alt="Tecno" class="w-4 h-4 filter brightness-0 invert">
+    Tecno
+  </button>
+  <button onclick="filterBrand('Infinix')" id="filter-infinix" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
+    <img src="https://static.vecteezy.com/system/resources/previews/020/927/136/large_2x/infinix-brand-logo-phone-symbol-name-green-design-china-mobile-illustration-with-black-background-free-vector.jpg" alt="Infinix" class="w-4 h-4">
+    Infinix
+  </button>
+</nav>
       <div class="flex items-center gap-3">
         <input id="searchInput" onkeyup="filterProducts()" placeholder="Buscar..." class="hidden sm:inline-block bg-white/10 px-3 py-2 rounded-md text-sm outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300">
         <button onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})" class="px-3 py-2 rounded-md bg-red-500 btn-anim">Ver productos</button>
@@ -186,7 +216,7 @@
       <!-- Información de contacto -->
       <div class="mt-6 bg-white/5 rounded-lg p-4 inline-block fade-in">
         <p class="text-green-400 font-semibold">📞 Contacta por WhatsApp</p>
-        <p class="text-sm text-gray-300 mt-1">+593 95 868 8163 • +593 95 868 8163</p>
+        <p class="text-sm text-gray-300 mt-1">+593 95 868 8163 </p>
       </div>
       
       <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
@@ -195,20 +225,20 @@
       </div>
       
       <!-- Botones de redes sociales en el hero -->
-      <div class="mt-8 flex justify-center gap-4">
-        <a href="https://www.facebook.com/tecnosam2022/" target="_blank" class="social-btn facebook" title="Facebook">
-          <i class="fab fa-facebook-f text-white"></i>
-        </a>
-        <a href="https://instagram.com/tecnosam" target="_blank" class="social-btn instagram" title="Instagram">
-          <i class="fab fa-instagram text-white"></i>
-        </a>
-        <a href="https://tiktok.com/@tecnosam" target="_blank" class="social-btn tiktok" title="TikTok">
-          <i class="fab fa-tiktok text-white"></i>
-        </a>
-        <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" title="WhatsApp">
-          <i class="fab fa-whatsapp text-white"></i>
-        </a>
-      </div>
+     <div class="mt-8 flex justify-center gap-4">
+  <a href="https://www.facebook.com/tecnosam2022/" target="_blank" class="social-btn facebook" title="Facebook">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" class="w-6 h-6">
+  </a>
+  <a href="https://instagram.com/tecnosam" target="_blank" class="social-btn instagram" title="Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="w-6 h-6">
+  </a>
+  <a href="https://tiktok.com/@tecnosam" target="_blank" class="social-btn tiktok" title="TikTok">
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" alt="TikTok" class="w-6 h-6">
+  </a>
+  <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" class="w-6 h-6">
+  </a>
+</div>
     </div>
   </section>
 
@@ -219,7 +249,7 @@
       <!-- Samsung -->
       <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Samsung')">
         <div class="w-16 h-16 mx-auto mb-3 bg-blue-500 rounded-full flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung" class="w-10 h-10 filter brightness-0 invert">
+          <img src="https://static.showit.co/file/SqAIpW6pSY6Ga8EOSig5Xw/84961/logo_s_te-leuk-eventdesign-klanten-02.png" alt="Samsung" class="w-10 h-10 filter brightness-0 invert">
         </div>
         <h3 class="font-semibold text-sm">Samsung</h3>
       </div>
@@ -227,7 +257,7 @@
       <!-- Apple -->
       <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Apple')">
         <div class="w-16 h-16 mx-auto mb-3 bg-gray-800 rounded-full flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" class="w-8 h-10 filter brightness-0 invert">
+          <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ed3d547-94ff-48e1-9f20-8c14a7030a02_2000x2000.jpeg" alt="Apple" class="w-8 h-10 filter brightness-0 invert">
         </div>
         <h3 class="font-semibold text-sm">Apple</h3>
       </div>
@@ -235,7 +265,7 @@
       <!-- Xiaomi -->
       <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Xiaomi')">
         <div class="w-16 h-16 mx-auto mb-3 bg-orange-500 rounded-full flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" alt="Xiaomi" class="w-10 h-10">
+          <img src="https://logos-marcas.com/wp-content/uploads/2021/04/Xiaomi-Logo.jpg" alt="Xiaomi" class="w-10 h-10">
         </div>
         <h3 class="font-semibold text-sm">Xiaomi</h3>
       </div>
@@ -243,7 +273,7 @@
       <!-- Motorola -->
       <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Motorola')">
         <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Motorola_M_logo.svg" alt="Motorola" class="w-10 h-10">
+          <img src="https://static.vecteezy.com/system/resources/previews/020/927/440/original/motorola-brand-logo-phone-symbol-with-name-white-design-usa-mobile-illustration-with-black-background-free-vector.jpg" alt="Motorola" class="w-10 h-10">
         </div>
         <h3 class="font-semibold text-sm">Motorola</h3>
       </div>
@@ -251,7 +281,7 @@
       <!-- Pocophone -->
       <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Pocophone')">
         <div class="w-16 h-16 mx-auto mb-3 bg-yellow-500 rounded-full flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Poco_logo.svg" alt="Pocophone" class="w-10 h-10">
+          <img src="https://tse3.mm.bing.net/th/id/OIP.1T3u3Zb69EoxqvyMQYfbLQHaEK?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pocophone" class="w-10 h-10">
         </div>
         <h3 class="font-semibold text-sm">Pocophone</h3>
       </div>
@@ -259,7 +289,7 @@
       <!-- Honor -->
       <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Honor')">
         <div class="w-16 h-16 mx-auto mb-3 bg-red-600 rounded-full flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Honor_logo.svg" alt="Honor" class="w-10 h-10 filter brightness-0 invert">
+          <img src="https://tiendahonorgt.com/wp-content/uploads/2023/02/HONOR-LOGO_BLACK.png" alt="Honor" class="w-10 h-10 filter brightness-0 invert">
         </div>
         <h3 class="font-semibold text-sm">Honor</h3>
       </div>
@@ -267,7 +297,7 @@
       <!-- Realme -->
       <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Realme')">
         <div class="w-16 h-16 mx-auto mb-3 bg-yellow-400 rounded-full flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Realme_logo.svg" alt="Realme" class="w-10 h-10">
+          <img src="https://ph-test-11.slatic.net/shop/9cb7d0f6b0bf5f7ddd1e7060ded658a8.png" alt="Realme" class="w-10 h-10">
         </div>
         <h3 class="font-semibold text-sm">Realme</h3>
       </div>
@@ -275,9 +305,15 @@
       <!-- Tecno -->
       <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Tecno')">
         <div class="w-16 h-16 mx-auto mb-3 bg-blue-600 rounded-full flex items-center justify-center">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/TECNO_Mobile_logo.svg" alt="Tecno" class="w-10 h-10 filter brightness-0 invert">
+          <img src="https://whoistheownerof.com/wp-content/uploads/2018/03/owner-of-Tecno-Mobile-India-Wiki-and-Logo-788x689.jpg" alt="Tecno" class="w-10 h-10 filter brightness-0 invert">
         </div>
         <h3 class="font-semibold text-sm">Tecno</h3>
+      </div>
+      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Tecno')">
+        <div class="w-16 h-16 mx-auto mb-3 bg-blue-600 rounded-full flex items-center justify-center">
+          <img src="https://static.vecteezy.com/system/resources/previews/020/927/136/large_2x/infinix-brand-logo-phone-symbol-name-green-design-china-mobile-illustration-with-black-background-free-vector.jpg" alt="Tecno" class="w-10 h-10 filter brightness-0 invert">
+        </div>
+        <h3 class="font-semibold text-sm">Infinix</h3>
       </div>
     </div>
   </section>
@@ -319,18 +355,19 @@
         <div class="mt-2 text-green-400 font-semibold">📞 WhatsApp: +593 95 868 8163</div>
         <div class="mt-2">Contacto: <a href="mailto:ventas@tecnosam.com" class="underline text-green-400">ventas@tecnosam.com</a></div>
         <div class="mt-4 flex justify-center md:justify-start gap-3">
-          <a href="https://www.facebook.com/tecnosam2022/" target="_blank" class="social-btn facebook" title="Facebook">
-            <i class="fab fa-facebook-f text-white"></i>
-          </a>
-          <a href="https://instagram.com/tecnosam" target="_blank" class="social-btn instagram" title="Instagram">
-            <i class="fab fa-instagram text-white"></i>
-          </a>
-          <a href="https://tiktok.com/@tecnosam" target="_blank" class="social-btn tiktok" title="TikTok">
-            <i class="fab fa-tiktok text-white"></i>
-          </a>
-          <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" title="WhatsApp">
-            <i class="fab fa-whatsapp text-white"></i>
-          </a>
+        <div class="mt-4 flex justify-center md:justify-start gap-3">
+  <a href="https://www.facebook.com/tecnosam2022/" target="_blank" class="social-btn facebook" title="Facebook">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" class="w-5 h-5">
+  </a>
+  <a href="https://instagram.com/tecnosam" target="_blank" class="social-btn instagram" title="Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="w-5 h-5">
+  </a>
+  <a href="https://tiktok.com/@tecnosam" target="_blank" class="social-btn tiktok" title="TikTok">
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" alt="TikTok" class="w-5 h-5">
+  </a>
+  <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" class="w-5 h-5">
+  </a>
         </div>
       </div>
       <div class="text-center md:text-right text-gray-300">
@@ -543,3 +580,4 @@
 
 </body>
 </html>
+
