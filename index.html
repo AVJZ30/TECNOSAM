@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TECNOSAM - Tienda de Celulares</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/scrollreveal"></script>
   <script src="https://kit.fontawesome.com/a2d9c5e6cc.js" crossorigin="anonymous"></script>
   <style>
     html { scroll-behavior: smooth; }
-    body { background-color: black; color: white; font-family: 'Poppins', sans-serif; }
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
     
     /* Animaciones mejoradas */
     .btn-anim { 
@@ -133,7 +137,7 @@
   </style>
 </head>
 
-<body class="antialiased">
+<body class="min-h-screen flex flex-col antialiased">
   <!-- WhatsApp flotante -->
   <div class="whatsapp-float">
     <a href="https://wa.me/593958688163" target="_blank" class="social-btn whatsapp" style="width: 60px; height: 60px; font-size: 1.5rem;">
@@ -281,7 +285,7 @@
   <!-- Ofertas -->
   <section id="ofertas" class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex justify-between items-center mb-6">
-      <h3 class="text-2xl font-bold text-red-400 fade-in">Ofertas Destacadas</h3>
+      <h3 class="text-2xl font-bold text-red-400 fade-in">🔥 Ofertas Destacadas</h3>
       <p class="text-sm text-gray-400">Desplaza para ver más ofertas →</p>
     </div>
     <div id="offersContainer" class="offers-scroll">
@@ -292,7 +296,7 @@
   <!-- Productos -->
   <main id="productos" class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
-      <h2 class="text-2xl font-bold fade-in">Catálogo Completo</h2>
+      <h2 class="text-2xl font-bold fade-in">📦 Catálogo Completo</h2>
       <div class="flex items-center gap-4">
         <label class="flex items-center gap-2 text-sm fade-in">
           <input type="checkbox" id="showOffersOnly" onchange="renderProducts()"> 
@@ -338,79 +342,43 @@
     </div>
   </footer>
 
+  <!-- Script para leer Telefonos.csv -->
   <script>
-    // Número de WhatsApp
     const whatsappNumber = '593958688163';
-
-    // TODOS LOS PRODUCTOS INTEGRADOS DIRECTAMENTE
-    const products = [
-      // SAMSUNG
-      { id: 1, brand: "Samsung", model: "Samsung 06 128GB", price: 95, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a146blvcaro/gallery/ar-galaxy-a06-sm-a146-sm-a146blvcaro-539258597?$650_519_PNG$", features: ["4GB RAM", "128GB", "Con estuche"], whatsapp: whatsappNumber, offer: true, category: "Económico" },
-      { id: 2, brand: "Samsung", model: "Samsung A16 4/128GB", price: 128, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a165mlvcaro/gallery/ar-galaxy-a16-5g-sm-a165-sm-a165mlvcaro-539963559?$650_519_PNG$", features: ["4GB RAM", "128GB", "Con estuche"], whatsapp: whatsappNumber, offer: false, category: "Económico" },
-      { id: 3, brand: "Samsung", model: "Samsung A16 8/256GB", price: 155, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a165mlvcaro/gallery/ar-galaxy-a16-5g-sm-a165-sm-a165mlvcaro-539963559?$650_519_PNG$", features: ["8GB RAM", "256GB", "Con estuche"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-      { id: 4, brand: "Samsung", model: "Samsung A17 5G 256GB", price: 228, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a176elvcaro/gallery/ar-galaxy-a17-5g-sm-a176-sm-a176elvcaro-540038472?$650_519_PNG$", features: ["8GB RAM", "256GB", "5G"], whatsapp: whatsappNumber, offer: false, category: "Media" },
-      { id: 5, brand: "Samsung", model: "Samsung A26 5G 8/256GB", price: 235, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a266elvcaro/gallery/ar-galaxy-a26-5g-sm-a266-sm-a266elvcaro-540038473?$650_519_PNG$", features: ["8GB RAM", "256GB", "5G"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-      { id: 6, brand: "Samsung", model: "Samsung A36 5G 8/256GB", price: 285, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a366elvcaro/gallery/ar-galaxy-a36-5g-sm-a366-sm-a366elvcaro-540038474?$650_519_PNG$", features: ["8GB RAM", "256GB", "5G"], whatsapp: whatsappNumber, offer: false, category: "Media" },
-      { id: 7, brand: "Samsung", model: "Samsung A56 5G 128GB", price: 350, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a566elvcaro/gallery/ar-galaxy-a56-5g-sm-a566-sm-a566elvcaro-540038475?$650_519_PNG$", features: ["8GB RAM", "128GB", "5G"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-      { id: 8, brand: "Samsung", model: "Samsung A56 12/256GB", price: 365, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-a566elvcaro/gallery/ar-galaxy-a56-5g-sm-a566-sm-a566elvcaro-540038475?$650_519_PNG$", features: ["12GB RAM", "256GB", "5G"], whatsapp: whatsappNumber, offer: false, category: "Media" },
-      { id: 9, brand: "Samsung", model: "Samsung M55 5G 256GB", price: 255, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-m556elvcaro/gallery/ar-galaxy-m55-5g-sm-m556-sm-m556elvcaro-540038476?$650_519_PNG$", features: ["8GB RAM", "256GB", "5G"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-      { id: 10, brand: "Samsung", model: "Samsung Galaxy X7 128GB", price: 300, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-x716elvcaro/gallery/ar-galaxy-x7-sm-x716-sm-x716elvcaro-540038477?$650_519_PNG$", features: ["8GB RAM", "128GB", "Con cover"], whatsapp: whatsappNumber, offer: false, category: "Media" },
-      { id: 11, brand: "Samsung", model: "Samsung S24 FE 256GB", price: 490, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-s721elvcaro/gallery/ar-galaxy-s24-fe-sm-s721-sm-s721elvcaro-540038478?$650_519_PNG$", features: ["8GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 12, brand: "Samsung", model: "Samsung S24 FE 512GB", price: 550, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-s721elvcaro/gallery/ar-galaxy-s24-fe-sm-s721-sm-s721elvcaro-540038478?$650_519_PNG$", features: ["12GB RAM", "512GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 13, brand: "Samsung", model: "Samsung S25 12/256GB", price: 715, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-s25-s931-sm-s931bzkearo-539961471?$650_519_PNG$", features: ["12GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 14, brand: "Samsung", model: "Samsung S25 FE 12/512GB", price: 730, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-s25-fe-sm-s721-sm-s721bzkearo-539961472?$650_519_PNG$", features: ["12GB RAM", "512GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 15, brand: "Samsung", model: "Samsung S25 Plus 256GB", price: 765, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-s25-plus-sm-s931-sm-s931bzkearo-539961473?$650_519_PNG$", features: ["12GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 16, brand: "Samsung", model: "Samsung S25 Plus 512GB", price: 830, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-s25-plus-sm-s931-sm-s931bzkearo-539961473?$650_519_PNG$", features: ["12GB RAM", "512GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 17, brand: "Samsung", model: "Samsung S25 Ultra 512GB", price: 1030, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-s25-ultra-sm-s931-sm-s931bzkearo-539961474?$650_519_PNG$", features: ["12GB RAM", "512GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 18, brand: "Samsung", model: "Samsung S25 Ultra 1TB", price: 1170, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-s25-ultra-sm-s931-sm-s931bzkearo-539961474?$650_519_PNG$", features: ["16GB RAM", "1TB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 19, brand: "Samsung", model: "Samsung Flip 7 512GB", price: 970, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-flip7-sm-f741-sm-f741bzkearo-539961475?$650_519_PNG$", features: ["12GB RAM", "512GB", "Plegable"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 20, brand: "Samsung", model: "Samsung Fold 6 256GB", price: 1270, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-fold6-sm-f946-sm-f946bzkearo-539961476?$650_519_PNG$", features: ["12GB RAM", "256GB", "Plegable"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 21, brand: "Samsung", model: "Samsung Fold 7 256GB", price: 1530, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-fold7-sm-f946-sm-f946bzkearo-539961477?$650_519_PNG$", features: ["12GB RAM", "256GB", "Plegable"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 22, brand: "Samsung", model: "Samsung Fold 7 512GB", price: 1650, image: "https://images.samsung.com/is/image/samsung/p6pim/ar/240115/gallery/ar-galaxy-fold7-sm-f946-sm-f946bzkearo-539961477?$650_519_PNG$", features: ["16GB RAM", "512GB", "Plegable"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-
-      // XIAOMI
-      { id: 23, brand: "Xiaomi", model: "Redmi A5 64GB", price: 78, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["4GB RAM", "64GB"], whatsapp: whatsappNumber, offer: true, category: "Económico" },
-      { id: 24, brand: "Xiaomi", model: "Redmi A5 128GB", price: 95, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["4GB RAM", "128GB"], whatsapp: whatsappNumber, offer: false, category: "Económico" },
-      { id: 25, brand: "Xiaomi", model: "Redmi 13 128GB", price: 135, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["6GB RAM", "128GB"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-      { id: 26, brand: "Xiaomi", model: "Redmi 13 256GB", price: 145, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["8GB RAM", "256GB"], whatsapp: whatsappNumber, offer: false, category: "Media" },
-      { id: 27, brand: "Xiaomi", model: "Redmi 14C 4/128GB", price: 110, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["4GB RAM", "128GB"], whatsapp: whatsappNumber, offer: true, category: "Económico" },
-      { id: 28, brand: "Xiaomi", model: "Redmi 14C 4/256GB", price: 120, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["4GB RAM", "256GB"], whatsapp: whatsappNumber, offer: false, category: "Económico" },
-      { id: 29, brand: "Xiaomi", model: "Redmi 15C 4/128GB", price: 120, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["4GB RAM", "128GB"], whatsapp: whatsappNumber, offer: true, category: "Económico" },
-      { id: 30, brand: "Xiaomi", model: "Redmi 15C 4/256GB", price: 135, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["4GB RAM", "256GB"], whatsapp: whatsappNumber, offer: false, category: "Económico" },
-      { id: 31, brand: "Xiaomi", model: "Redmi 15C 8/256GB", price: 145, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["8GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-      { id: 32, brand: "Xiaomi", model: "Redmi Note 14 6/128GB", price: 155, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["6GB RAM", "128GB"], whatsapp: whatsappNumber, offer: false, category: "Media" },
-      { id: 33, brand: "Xiaomi", model: "Redmi Note 14 8/256GB", price: 180, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["8GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-      { id: 34, brand: "Xiaomi", model: "Redmi Note 14 Pro 8/256GB", price: 230, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["8GB RAM", "256GB"], whatsapp: whatsappNumber, offer: false, category: "Media" },
-      { id: 35, brand: "Xiaomi", model: "Redmi Note 14 Pro Plus 5G 512GB", price: 395, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["12GB RAM", "512GB", "5G"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 36, brand: "Xiaomi", model: "Redmi Mi 15T 12/512GB Kit", price: 570, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["12GB RAM", "512GB", "Con kit"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 37, brand: "Xiaomi", model: "Redmi 15 12/512GB", price: 800, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["12GB RAM", "512GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 38, brand: "Xiaomi", model: "Xiaomi Mi 15T Pro 12/512GB", price: 720, image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1705397888.45083169.png", features: ["12GB RAM", "512GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-
-      // APPLE
-      { id: 39, brand: "Apple", model: "iPhone 13 128GB", price: 530, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1655316266038", features: ["4GB RAM", "128GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 40, brand: "Apple", model: "iPhone 14 128GB", price: 605, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660676485884", features: ["6GB RAM", "128GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 41, brand: "Apple", model: "iPhone 15 128GB", price: 660, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1693340381462", features: ["6GB RAM", "128GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 42, brand: "Apple", model: "iPhone 16 128GB", price: 770, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1725231131562", features: ["6GB RAM", "128GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 43, brand: "Apple", model: "iPhone 16 256GB", price: 875, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1725231131562", features: ["6GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 44, brand: "Apple", model: "iPhone 16 Plus 128GB", price: 920, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-plus-finish-select-202409-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1725231131562", features: ["6GB RAM", "128GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 45, brand: "Apple", model: "iPhone 16 Plus 256GB", price: 1010, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-plus-finish-select-202409-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1725231131562", features: ["6GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-      { id: 46, brand: "Apple", model: "iPhone 16 Pro 128GB", price: 1110, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1725231131562", features: ["8GB RAM", "128GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-      { id: 47, brand: "Apple", model: "iPhone 16 Pro 256GB", price: 1320, image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1725231131562", features: ["8GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Premium" },
-
-      // MOTOROLA
-      { id: 48, brand: "Motorola", model: "Moto G05 128GB", price: 105, image: "https://www.motorola.com/sites/default/files/styles/product_detail_hero_1440x900/public/2024-03/moto-g05-128gb-front-back-silver.png?itok=6X6Z6Z6Z", features: ["4GB RAM", "128GB"], whatsapp: whatsappNumber, offer: false, category: "Económico" },
-      { id: 49, brand: "Motorola", model: "Moto G15 512GB", price: 175, image: "https://www.motorola.com/sites/default/files/styles/product_detail_hero_1440x900/public/2024-03/moto-g15-512gb-front-back-silver.png?itok=6X6Z6Z6Z", features: ["8GB RAM", "512GB"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-
-      // POCOPHONE
-      { id: 50, brand: "Pocophone", model: "Poco C85 8/256GB", price: 155, image: "https://www.poco.net/sites/default/files/styles/product_detail_hero_1440x900/public/2024-03/poco-c85-8-256gb-front-back-silver.png?itok=6X6Z6Z6Z", features: ["8GB RAM", "256GB"], whatsapp: whatsappNumber, offer: false, category: "Media" },
-      { id: 51, brand: "Pocophone", model: "Poco M7 8/256GB", price: 185, image: "https://www.poco.net/sites/default/files/styles/product_detail_hero_1440x900/public/2024-03/poco-m7-8-256gb-front-back-silver.png?itok=6X6Z6Z6Z", features: ["8GB RAM", "256GB"], whatsapp: whatsappNumber, offer: true, category: "Media" },
-      { id: 52, brand: "Pocophone", model: "Poco F7 Pro 512GB", price: 545, image: "https://www.poco.net/sites/default/files/styles/product_detail_hero_1440x900/public/2024-03/poco-f7-pro-512gb-front-back-silver.png?itok=6X6Z6Z6Z", features: ["12GB RAM", "512GB"], whatsapp: whatsappNumber, offer: false, category: "Premium" },
-
-      // Continuar con más productos...
-      // HONOR, REALME, TECNO, INFINIX, etc.
-    ];
-
+    let products = [];
     let selectedBrand = "Todos";
+
+    // Función para cargar CSV
+    async function loadProductsFromCSV() {
+      try {
+        const response = await fetch('Telefonos.csv');
+        const data = await response.text();
+
+        const rows = data.split('\n').slice(1); // Omitir encabezado
+        products = rows
+          .map(row => {
+            const cols = row.split(',');
+            if (cols.length < 7) return null; // Saltar líneas incompletas
+            return {
+              brand: cols[0].trim(),
+              model: cols[1].trim(),
+              price: parseFloat(cols[2]),
+              image: cols[3].trim(),
+              features: cols[4].replace(/"/g, '').split(';').map(f => f.trim()),
+              whatsapp: whatsappNumber,
+              offer: cols[5].trim().toLowerCase() === 'true',
+              category: cols[6].trim()
+            };
+          })
+          .filter(Boolean);
+
+        init();
+      } catch (err) {
+        console.error("Error cargando Telefonos.csv:", err);
+        document.getElementById("productsContainer").innerHTML =
+          "<p class='text-center text-gray-400'>No se pudieron cargar los teléfonos.</p>";
+      }
+    }
 
     // Inicializar la página
     function init() {
@@ -434,22 +402,23 @@
     }
 
     function renderProducts() {
-      const container = document.getElementById("productsContainer");
-      const showOffers = document.getElementById("showOffersOnly").checked;
-      const query = document.getElementById("searchInput").value?.toLowerCase() || "";
-      container.innerHTML = "";
-      
-      const filteredProducts = products.filter(p => 
-        (selectedBrand === "Todos" || p.brand === selectedBrand) && 
-        (!showOffers || p.offer) &&
-        (!query || 
-          p.brand.toLowerCase().includes(query) || 
-          p.model.toLowerCase().includes(query) || 
-          p.features.join(" ").toLowerCase().includes(query) ||
-          (p.category && p.category.toLowerCase().includes(query)))
-      );
-      
-      if (filteredProducts.length === 0) {
+      const container = document.getElementById('productsContainer');
+      container.innerHTML = '';
+
+      const showOffersOnly = document.getElementById('showOffersOnly')?.checked;
+      const search = document.getElementById('searchInput')?.value.toLowerCase();
+
+      const filtered = products.filter(p => {
+        const matchesSearch =
+          !search ||
+          p.model.toLowerCase().includes(search) ||
+          p.brand.toLowerCase().includes(search);
+        const matchesOffer = !showOffersOnly || p.offer;
+        const matchesBrand = selectedBrand === "Todos" || p.brand === selectedBrand;
+        return matchesSearch && matchesOffer && matchesBrand;
+      });
+
+      if (filtered.length === 0) {
         container.innerHTML = `
           <div class="col-span-full text-center py-10">
             <p class="text-xl text-gray-400">No se encontraron productos</p>
@@ -458,32 +427,31 @@
         `;
         return;
       }
-      
-      filteredProducts.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "card bg-white bg-opacity-5 rounded-xl overflow-hidden border border-gray-800 shadow-lg fade-in";
+
+      filtered.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'card bg-white bg-opacity-5 rounded-xl overflow-hidden border border-gray-800 shadow-lg fade-in';
         card.innerHTML = `
           <div class="relative overflow-hidden">
-            <img src="${p.image}" alt="${p.brand} ${p.model}" class="w-full h-48 object-cover img-hover">
+            <img src="${p.image}" alt="${p.model}" class="rounded-lg img-hover mb-3 w-full h-48 object-contain">
             ${p.offer ? `<span class='absolute top-3 left-3 bg-red-600 px-2 py-1 rounded text-xs font-bold animate-pulse'>OFERTA</span>` : ""}
             <span class='absolute top-3 right-3 bg-blue-600 px-2 py-1 rounded text-xs font-bold'>${p.brand}</span>
           </div>
           <div class="p-4">
-            <h3 class="text-lg font-semibold">${p.model}</h3>
-            <p class="text-sm text-gray-300 mt-1">${Array.isArray(p.features) ? p.features.join(" • ") : p.features}</p>
-            <div class="mt-3 flex justify-between items-center">
-              <div class="text-xl font-bold text-green-400">$${p.price}</div>
-              <div class="text-xs text-gray-400">Pago seguro</div>
-            </div>
-            <div class="mt-4 flex flex-col sm:flex-row gap-2">
-              <a href="https://wa.me/${p.whatsapp}?text=Hola TECNOSAM!%20Quiero%20comprar%20el%20${p.brand}%20${p.model}%20por%20$${p.price}" target="_blank" class="flex-1 text-center py-2 rounded-md bg-green-600 text-black font-semibold btn-anim">
+            <h3 class="font-bold text-lg">${p.model}</h3>
+            <p class="text-sm text-gray-300">${p.brand}</p>
+            <ul class="mt-2 text-gray-400 text-sm">
+              ${p.features.map(f => `<li>• ${f}</li>`).join('')}
+            </ul>
+            <div class="mt-4 flex justify-between items-center">
+              <span class="text-xl font-semibold text-green-400">$${p.price}</span>
+              <a href="https://wa.me/${p.whatsapp}?text=Hola TECNOSAM!%20Estoy%20interesado%20en%20el%20${encodeURIComponent(p.model)}" 
+                 target="_blank" class="px-3 py-1 bg-green-500 rounded-md text-sm font-medium btn-anim">
                 <i class="fab fa-whatsapp mr-2"></i>Comprar
               </a>
-              <button onclick="addToCart(${p.id})" class="px-3 py-2 rounded-md border border-white/10 btn-anim">
-                <i class="fas fa-shopping-cart mr-2"></i>Añadir
-              </button>
             </div>
-          </div>`;
+          </div>
+        `;
         container.appendChild(card);
       });
       
@@ -497,23 +465,23 @@
     }
 
     function renderOffers() {
-      const container = document.getElementById("offersContainer");
-      container.innerHTML = "";
-      
+      const offersContainer = document.getElementById('offersContainer');
+      offersContainer.innerHTML = '';
+
       const offers = products.filter(p => p.offer);
-      
+
       if (offers.length === 0) {
-        container.innerHTML = `
+        offersContainer.innerHTML = `
           <div class="text-center py-10 min-w-full">
             <p class="text-xl text-gray-400">No hay ofertas disponibles</p>
           </div>
         `;
         return;
       }
-      
+
       offers.forEach(p => {
-        const offerCard = document.createElement("div");
-        offerCard.className = "offer-card p-4 bg-white bg-opacity-5 rounded-lg border border-red-700/30 card fade-in";
+        const offerCard = document.createElement('div');
+        offerCard.className = 'offer-card p-4 bg-white bg-opacity-5 rounded-lg border border-red-700/30 card fade-in';
         offerCard.innerHTML = `
           <div class="flex flex-col sm:flex-row gap-4 items-center">
             <img src="${p.image}" class="w-24 h-24 object-cover rounded-md img-hover" alt="${p.brand} ${p.model}">
@@ -526,7 +494,7 @@
               </a>
             </div>
           </div>`;
-        container.appendChild(offerCard);
+        offersContainer.appendChild(offerCard);
       });
       
       ScrollReveal().reveal('.card', { 
@@ -568,31 +536,10 @@
       
       renderProducts();
     }
-    
-    function addToCart(productId) {
-      const product = products.find(p => p.id === productId);
-      if (product) {
-        const notification = document.createElement('div');
-        notification.className = 'fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-md shadow-lg z-50 fade-in';
-        notification.innerHTML = `
-          <div class="flex items-center">
-            <i class="fas fa-check-circle mr-2"></i>
-            <span>Añadido: ${product.brand} ${product.model}</span>
-          </div>
-        `;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-          notification.classList.add('opacity-0', 'transition-opacity', 'duration-500');
-          setTimeout(() => {
-            document.body.removeChild(notification);
-          }, 500);
-        }, 3000);
-      }
-    }
 
-    // Inicializar cuando se carga la página
-    document.addEventListener('DOMContentLoaded', init);
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', loadProductsFromCSV);
   </script>
+
 </body>
 </html>
