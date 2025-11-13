@@ -164,10 +164,12 @@
   </a>
 </div>
 
+<!-- Header -->
 <header class="sticky top-0 z-50 bg-gradient-to-r from-red-800 via-black to-green-900 border-b border-red-700/50">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    
+    <!-- Logo TECNOSAM -->
     <div onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-3 cursor-pointer flex-shrink-0">
-      <!-- Logo TECNOSAM -->
       <img src="https://scontent.fgye4-1.fna.fbcdn.net/v/t39.30808-6/228815488_4147089055405378_4362158858314802035_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEY4_Sej78sJI2-lIC6a7gaHom0dC3AooQeibR0LcCihE4Q9Y8pJsXOyM0Y-UUQgw8CAgh_ktP-x_nZuYRJXQU1&_nc_ohc=6dqVQLZEJQAQ7kNvwEwae8C&_nc_oc=AdmsPwqFXK4Jj0GgrfP62wNawerH78hqwJWAfvBF3ojidN6Gr2vsMw7iH1eDtYe0plQ&_nc_zt=23&_nc_ht=scontent.fgye4-1.fna&_nc_gid=LEkoPE6NfDaT-Tf8C19s8A&oh=00_Afh_vgq-Tvzcz1VcO8deAMYdwKW0_s20_gW7LoXNYo1xdA&oe=691B029D" 
            alt="TECNOSAM" 
            class="w-10 h-10 rounded-full object-cover border-2 border-red-600 shadow-lg">
@@ -176,55 +178,102 @@
         <p class="text-xs text-gray-300">Tecnología de Vanguardia</p>
       </div>
     </div>
-    
-    <nav class="hidden lg:flex gap-1 flex-wrap justify-end">
-      <button onclick="filterBrand('Todos')" id="filter-todos" class="px-2 py-1 rounded-md bg-red-600/80 text-xs font-medium filter-active flex items-center gap-1">
+
+    <!-- Navegación con logos funcionales -->
+    <nav class="hidden lg:flex gap-1 flex-wrap justify-center">
+      
+      <!-- Todos -->
+      <button onclick="filterBrand('Todos')" id="filter-todos" class="px-2 py-2 rounded-md bg-red-600/80 text-xs font-medium filter-active flex items-center gap-1">
         <i class="fas fa-layer-group w-3 h-3"></i>
-        Todos
+        <span class="hidden sm:inline">Todos</span>
       </button>
-  <button onclick="filterBrand('Samsung')" id="filter-samsung" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://static.showit.co/file/SqAIpW6pSY6Ga8EOSig5Xw/84961/logo_s_te-leuk-eventdesign-klanten-02.png" alt="Samsung" class="w-4 h-4 filter brightness-0 invert">
-    Samsung
-  </button>
-  <button onclick="filterBrand('Apple')" id="filter-apple" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ed3d547-94ff-48e1-9f20-8c14a7030a02_2000x2000.jpeg" alt="Apple" class="w-3 h-4 filter brightness-0 invert">
-    Apple
-  </button>
-  <button onclick="filterBrand('Xiaomi')" id="filter-xiaomi" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://logos-marcas.com/wp-content/uploads/2021/04/Xiaomi-Logo.jpg" alt="Xiaomi" class="w-4 h-4">
-    Xiaomi
-  </button>
-  <button onclick="filterBrand('Motorola')" id="filter-motorola" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://static.vecteezy.com/system/resources/previews/020/927/440/original/motorola-brand-logo-phone-symbol-with-name-white-design-usa-mobile-illustration-with-black-background-free-vector.jpg" alt="Motorola" class="w-4 h-4">
-    Motorola
-  </button>
-  <button onclick="filterBrand('Pocophone')" id="filter-pocophone" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://tse3.mm.bing.net/th/id/OIP.1T3u3Zb69EoxqvyMQYfbLQHaEK?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pocophone" class="w-4 h-4">
-    Pocophone
-  </button>
-  <button onclick="filterBrand('Honor')" id="filter-honor" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://tiendahonorgt.com/wp-content/uploads/2023/02/HONOR-LOGO_BLACK.png" alt="Honor" class="w-4 h-4 filter brightness-0 invert">
-    Honor
-  </button>
-  <button onclick="filterBrand('Realme')" id="filter-realme" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://ph-test-11.slatic.net/shop/9cb7d0f6b0bf5f7ddd1e7060ded658a8.png" alt="Realme" class="w-4 h-4">
-    Realme
-  </button>
-  <button onclick="filterBrand('Tecno')" id="filter-tecno" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://whoistheownerof.com/wp-content/uploads/2018/03/owner-of-Tecno-Mobile-India-Wiki-and-Logo-788x689.jpg" alt="Tecno" class="w-4 h-4 filter brightness-0 invert">
-    Tecno
-  </button>
-  <button onclick="filterBrand('Infinix')" id="filter-infinix" class="px-3 py-2 rounded-md hover:bg-white/10 text-sm flex items-center gap-2">
-    <img src="https://static.vecteezy.com/system/resources/previews/020/927/136/large_2x/infinix-brand-logo-phone-symbol-name-green-design-china-mobile-illustration-with-black-background-free-vector.jpg" alt="Infinix" class="w-4 h-4">
-    Infinix
-  </button>
-</nav>
-      <div class="flex items-center gap-3">
-        <input id="searchInput" onkeyup="filterProducts()" placeholder="Buscar..." class="hidden sm:inline-block bg-white/10 px-3 py-2 rounded-md text-sm outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300">
-        <button onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})" class="px-3 py-2 rounded-md bg-red-500 btn-anim">Ver productos</button>
-      </div>
+
+      <!-- Samsung -->
+      <button onclick="filterBrand('Samsung')" id="filter-samsung" class="px-2 py-2 rounded-md hover:bg-blue-500/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/884/884612.png" 
+             alt="Samsung" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-blue-300">Samsung</span>
+      </button>
+
+      <!-- Apple -->
+      <button onclick="filterBrand('Apple')" id="filter-apple" class="px-2 py-2 rounded-md hover:bg-gray-500/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/0/747.png" 
+             alt="Apple" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-gray-300">Apple</span>
+      </button>
+
+      <!-- Xiaomi -->
+      <button onclick="filterBrand('Xiaomi')" id="filter-xiaomi" class="px-2 py-2 rounded-md hover:bg-orange-500/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/3004/3004589.png" 
+             alt="Xiaomi" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-orange-300">Xiaomi</span>
+      </button>
+
+      <!-- Motorola -->
+      <button onclick="filterBrand('Motorola')" id="filter-motorola" class="px-2 py-2 rounded-md hover:bg-purple-500/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/882/882701.png" 
+             alt="Motorola" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-purple-300">Motorola</span>
+      </button>
+
+      <!-- Pocophone -->
+      <button onclick="filterBrand('Pocophone')" id="filter-pocophone" class="px-2 py-2 rounded-md hover:bg-yellow-500/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/2504/2504928.png" 
+             alt="Pocophone" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-yellow-300">Poco</span>
+      </button>
+
+      <!-- Realme -->
+      <button onclick="filterBrand('Realme')" id="filter-realme" class="px-2 py-2 rounded-md hover:bg-yellow-400/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/2504/2504949.png" 
+             alt="Realme" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-yellow-200">Realme</span>
+      </button>
+
+      <!-- Tecno -->
+      <button onclick="filterBrand('Tecno')" id="filter-tecno" class="px-2 py-2 rounded-md hover:bg-blue-600/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/1061/1061146.png" 
+             alt="Tecno" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-blue-300">Tecno</span>
+      </button>
+
+      <!-- Honor -->
+      <button onclick="filterBrand('Honor')" id="filter-honor" class="px-2 py-2 rounded-md hover:bg-red-500/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/2504/2504907.png" 
+             alt="Honor" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-red-300">Honor</span>
+      </button>
+
+      <!-- Infinix -->
+      <button onclick="filterBrand('Infinix')" id="filter-infinix" class="px-2 py-2 rounded-md hover:bg-purple-600/20 text-xs flex items-center gap-1 group">
+        <img src="https://cdn-icons-png.flaticon.com/512/2504/2504914.png" 
+             alt="Infinix" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-purple-300">Infinix</span>
+      </button>
+
+    </nav>
+
+    <!-- Buscar y botón Ver productos -->
+    <div class="flex items-center gap-2">
+      <input id="searchInput" onkeyup="filterProducts()" placeholder="Buscar..." 
+             class="bg-white/10 px-3 py-2 rounded-md text-sm outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 w-32 sm:w-40">
+      <button onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})" 
+              class="px-3 py-2 rounded-md bg-red-500 btn-anim text-sm whitespace-nowrap">
+        Ver productos
+      </button>
     </div>
-  </header>
+
+  </div>
+</header>
 
   <!-- Hero -->
   <section class="bg-gradient-to-r from-red-900 via-black to-green-900 py-20 text-center">
@@ -633,6 +682,7 @@
 
 </body>
 </html>
+
 
 
 
