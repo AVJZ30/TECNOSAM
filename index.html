@@ -86,6 +86,25 @@
       transition: all 0.3s ease;
       cursor: pointer;
     }
+    /* Agregar esto en tu sección de estilos */
+.category-card img {
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Asegurar que todas las imágenes se vean bien */
+.category-card div {
+  position: relative;
+}
+
+.category-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
     .category-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
@@ -244,80 +263,113 @@
   </section>
 
   <!-- Marcas Disponibles -->
-  <section class="max-w-7xl mx-auto px-4 py-12">
-    <h2 class="text-3xl font-bold text-center mb-12 fade-in">Marcas Disponibles</h2>
-    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-6">
-      <!-- Samsung -->
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Samsung')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-blue-500 rounded-full flex items-center justify-center">
-          <img src="https://static.showit.co/file/SqAIpW6pSY6Ga8EOSig5Xw/84961/logo_s_te-leuk-eventdesign-klanten-02.png" alt="Samsung" class="w-10 h-10 filter brightness-0 invert">
-        </div>
-        <h3 class="font-semibold text-sm">Samsung</h3>
+<!-- Marcas Disponibles -->
+<section class="max-w-7xl mx-auto px-4 py-12">
+  <h2 class="text-3xl font-bold text-center mb-12 fade-in">Marcas Disponibles</h2>
+  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-6">
+    
+    <!-- Samsung -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Samsung')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-blue-500 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" 
+             alt="Samsung" 
+             class="w-full h-full object-contain filter brightness-0 invert">
       </div>
-      
-      <!-- Apple -->
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Apple')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-gray-800 rounded-full flex items-center justify-center">
-          <img src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8ed3d547-94ff-48e1-9f20-8c14a7030a02_2000x2000.jpeg" alt="Apple" class="w-8 h-10 filter brightness-0 invert">
-        </div>
-        <h3 class="font-semibold text-sm">Apple</h3>
-      </div>
-      
-      <!-- Xiaomi -->
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Xiaomi')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-orange-500 rounded-full flex items-center justify-center">
-          <img src="https://logos-marcas.com/wp-content/uploads/2021/04/Xiaomi-Logo.jpg" alt="Xiaomi" class="w-10 h-10">
-        </div>
-        <h3 class="font-semibold text-sm">Xiaomi</h3>
-      </div>
-      
-      <!-- Motorola -->
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Motorola')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center">
-          <img src="https://static.vecteezy.com/system/resources/previews/020/927/440/original/motorola-brand-logo-phone-symbol-with-name-white-design-usa-mobile-illustration-with-black-background-free-vector.jpg" alt="Motorola" class="w-10 h-10">
-        </div>
-        <h3 class="font-semibold text-sm">Motorola</h3>
-      </div>
-      
-      <!-- Pocophone -->
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Pocophone')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-yellow-500 rounded-full flex items-center justify-center">
-          <img src="https://tse3.mm.bing.net/th/id/OIP.1T3u3Zb69EoxqvyMQYfbLQHaEK?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pocophone" class="w-10 h-10">
-        </div>
-        <h3 class="font-semibold text-sm">Pocophone</h3>
-      </div>
-      
-      <!-- Honor -->
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Honor')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-red-600 rounded-full flex items-center justify-center">
-          <img src="https://tiendahonorgt.com/wp-content/uploads/2023/02/HONOR-LOGO_BLACK.png" alt="Honor" class="w-10 h-10 filter brightness-0 invert">
-        </div>
-        <h3 class="font-semibold text-sm">Honor</h3>
-      </div>
-      
-      <!-- Realme -->
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Realme')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-yellow-400 rounded-full flex items-center justify-center">
-          <img src="https://ph-test-11.slatic.net/shop/9cb7d0f6b0bf5f7ddd1e7060ded658a8.png" alt="Realme" class="w-10 h-10">
-        </div>
-        <h3 class="font-semibold text-sm">Realme</h3>
-      </div>
-      
-      <!-- Tecno -->
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Tecno')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-blue-600 rounded-full flex items-center justify-center">
-          <img src="https://whoistheownerof.com/wp-content/uploads/2018/03/owner-of-Tecno-Mobile-India-Wiki-and-Logo-788x689.jpg" alt="Tecno" class="w-10 h-10 filter brightness-0 invert">
-        </div>
-        <h3 class="font-semibold text-sm">Tecno</h3>
-      </div>
-      <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Tecno')">
-        <div class="w-16 h-16 mx-auto mb-3 bg-blue-600 rounded-full flex items-center justify-center">
-          <img src="https://static.vecteezy.com/system/resources/previews/020/927/136/large_2x/infinix-brand-logo-phone-symbol-name-green-design-china-mobile-illustration-with-black-background-free-vector.jpg" alt="Tecno" class="w-10 h-10 filter brightness-0 invert">
-        </div>
-        <h3 class="font-semibold text-sm">Infinix</h3>
-      </div>
+      <h3 class="font-semibold text-sm">Samsung</h3>
     </div>
-  </section>
+    
+    <!-- Apple -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Apple')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-gray-800 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
+             alt="Apple" 
+             class="w-10 h-12 object-contain filter brightness-0 invert">
+      </div>
+      <h3 class="font-semibold text-sm">Apple</h3>
+    </div>
+    
+    <!-- Xiaomi -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Xiaomi')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-orange-500 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg" 
+             alt="Xiaomi" 
+             class="w-full h-full object-contain">
+      </div>
+      <h3 class="font-semibold text-sm">Xiaomi</h3>
+    </div>
+    
+    <!-- Motorola -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Motorola')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Motorola_M_logo.svg" 
+             alt="Motorola" 
+             class="w-full h-full object-contain">
+      </div>
+      <h3 class="font-semibold text-sm">Motorola</h3>
+    </div>
+    
+    <!-- PICO -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('PICO')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-blue-600 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Poco_logo.svg" 
+             alt="PICO" 
+             class="w-full h-full object-contain">
+      </div>
+      <h3 class="font-semibold text-sm">PICO</h3>
+    </div>
+    
+    <!-- Pocophone -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Pocophone')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-yellow-500 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Poco_logo.svg" 
+             alt="Pocophone" 
+             class="w-full h-full object-contain">
+      </div>
+      <h3 class="font-semibold text-sm">Pocophone</h3>
+    </div>
+    
+    <!-- HONOR -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('HONOR')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-red-600 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Honor_logo.svg" 
+             alt="HONOR" 
+             class="w-full h-full object-contain filter brightness-0 invert">
+      </div>
+      <h3 class="font-semibold text-sm">HONOR</h3>
+    </div>
+    
+    <!-- Realme (corregido de "Resime") -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Realme')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Realme_logo.svg" 
+             alt="Realme" 
+             class="w-full h-full object-contain">
+      </div>
+      <h3 class="font-semibold text-sm">Realme</h3>
+    </div>
+    
+    <!-- Tecno (corregido de "Techo") -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Tecno')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-blue-600 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/TECNO_Mobile_logo.svg" 
+             alt="Tecno" 
+             class="w-full h-full object-contain filter brightness-0 invert">
+      </div>
+      <h3 class="font-semibold text-sm">Tecno</h3>
+    </div>
+    
+    <!-- Infinix (corregido de "Infinitx") -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Infinix')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-purple-600 rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Infinix_logo.svg" 
+             alt="Infinix" 
+             class="w-full h-full object-contain">
+      </div>
+      <h3 class="font-semibold text-sm">Infinix</h3>
+    </div>
+    
+  </div>
+</section>
 
   <!-- Ofertas -->
   <section id="ofertas" class="max-w-7xl mx-auto px-4 py-8">
@@ -581,6 +633,7 @@
 
 </body>
 </html>
+
 
 
 
