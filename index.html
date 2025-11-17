@@ -487,7 +487,7 @@
         const rows = data.split('\n').slice(1); // Omitir encabezado
         products = rows
           .map(row => {
-            const cols = row.split(',');
+            const cols = row.split(';');
             if (cols.length < 7) return null; // Saltar líneas incompletas
             return {
               brand: cols[0].trim(),
@@ -673,6 +673,7 @@
 
 </body>
 </html>
+
 
 
 
