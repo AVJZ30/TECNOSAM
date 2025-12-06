@@ -170,7 +170,7 @@
     
     <!-- Logo TECNOSAM -->
     <div onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-3 cursor-pointer flex-shrink-0">
-      <img src="https://scontent.fgye4-1.fna.fbcdn.net/v/t39.30808-6/228815488_4147089055405378_4362158858314802035_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeEY4_Sej78sJI2-lIC6a7gaHom0dC3AooQeibR0LcCihE4Q9Y8pJsXOyM0Y-UUQgw8CAgh_ktP-x_nZuYRJXQU1&_nc_ohc=6dqVQLZEJQAQ7kNvwEwae8C&_nc_oc=AdmsPwqFXK4Jj0GgrfP62wNawerH78hqwJWAfvBF3ojidN6Gr2vsMw7iH1eDtYe0plQ&_nc_zt=23&_nc_ht=scontent.fgye4-1.fna&_nc_gid=LEkoPE6NfDaT-Tf8C19s8A&oh=00_Afh_vgq-Tvzcz1VcO8deAMYdwKW0_s20_gW7LoXNYo1xdA&oe=691B029D" 
+      <img src="" 
            alt="TECNOSAM" 
            class="w-10 h-10 rounded-full object-cover border-2 border-red-600 shadow-lg">
       <div class="hidden sm:block">
@@ -251,6 +251,14 @@
              class="w-4 h-4 group-hover:scale-110 transition-transform">
         <span class="hidden sm:inline group-hover:text-red-300">Honor</span>
       </button>
+       <!-- ZTE -->
+      <button onclick="filterBrand('Honor')" id="filter-ZTE " class="px-2 py-2 rounded-md hover:bg-red-500/20 text-xs flex items-center gap-1 group">
+        <img src="https://companieslogo.com/img/orig/000063.SZ-f4bdc996.png?t=1596098619" 
+             alt="ZTE" 
+             class="w-4 h-4 group-hover:scale-110 transition-transform">
+        <span class="hidden sm:inline group-hover:text-red-300">ZTE</span>
+      </button>
+
 
       <!-- Infinix -->
       <button onclick="filterBrand('Infinix')" id="filter-infinix" class="px-2 py-2 rounded-md hover:bg-purple-600/20 text-xs flex items-center gap-1 group">
@@ -346,7 +354,7 @@
       </div>
       <h3 class="font-semibold text-sm">Xiaomi</h3>
     </div>
-    
+
     <!-- Motorola -->
     <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Motorola')">
       <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center overflow-hidden p-2">
@@ -369,7 +377,7 @@
     </div>
     
     <!-- HONOR -->
-    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('HONOR')">
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Honor')">
       <div class="w-16 h-16 mx-auto mb-3 bg-red-600 rounded-full flex items-center justify-center overflow-hidden p-2">
         <img src="https://tse4.mm.bing.net/th/id/OIP.9VDZPL9Hn8U9d9RHkV7mSAHaEK?cb=ucfimgc2&w=1920&h=1080&rs=1&pid=ImgDetMain&o=7&rm=3" 
              alt="HONOR" 
@@ -397,7 +405,15 @@
       </div>
       <h3 class="font-semibold text-sm">Tecno</h3>
     </div>
-    
+    <!-- Motorola -->
+    <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('ZTE')">
+      <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center overflow-hidden p-2">
+        <img src="https://companieslogo.com/img/orig/000063.SZ-f4bdc996.png?t=1596098619" 
+             alt="Motorola" 
+             class="w-full h-full object-contain">
+      </div>
+      <h3 class="font-semibold text-sm">ZTE</h3>
+    </div>
     <!-- Infinix (corregido de "Infinitx") -->
     <div class="category-card bg-white bg-opacity-5 rounded-xl p-4 text-center border border-gray-800" onclick="filterBrand('Infinix')">
       <div class="w-16 h-16 mx-auto mb-3 bg-purple-600 rounded-full flex items-center justify-center overflow-hidden p-2">
@@ -673,6 +689,7 @@
 
 </body>
 </html>
+
 
 
 
